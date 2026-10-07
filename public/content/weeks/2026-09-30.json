@@ -1,0 +1,14 @@
+{
+  "id": "2026-09-30",
+  "title": "4 spellings of /ae/",
+  "sound": "ae",
+  "graphemes": ["ai", "ay", "a_e", "ea"],
+  "words": ["m[a]k[e]", "m[a]d[e]", "s[ai]l", "p[ai]n", "cl[ay]", "p[ay]", "gr[ea]t"],
+  "tricky": ["all", "said"],
+  "tips": {
+    "ea": "'ea' is only in great, steak and break.",
+    "ay": "'ay' usually comes at the end of a word.",
+    "ai": "'ai' usually sits in the middle of a word.",
+    "a_e": "Split 'a_e': the 'e' jumps to the end and makes the 'a' say its name."
+  }
+}
