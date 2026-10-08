@@ -67,7 +67,7 @@ function nextStep() {
       :title="fill(story.endTitle || 'Hooray!')"
       :text="fill(story.ending) || line('chapterEnd')"
       :speakers="['hero', 'sidekick']"
-      :background="asset(story.background)"
+      :background="asset(story.endBackground || story.background)"
       button="Play again"
       @next="step = 0"
     >

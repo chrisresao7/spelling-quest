@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice">
+  <!-- Original background drawn for Spelling Quest. -->
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fcdf3"/><stop offset="1" stop-color="#d6f1fc"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#sky)"/>
+  <g transform="translate(220 150)"><circle r="100" fill="#fff3b0" opacity="0.5"/><circle r="70" fill="#ffd24a"/></g>
+  <g transform="translate(700 140) scale(1)" fill="#fff" opacity="0.9"><ellipse cx="0" cy="0" rx="70" ry="34"/><ellipse cx="55" cy="-18" rx="52" ry="40"/><ellipse cx="110" cy="2" rx="62" ry="30"/></g> <g transform="translate(1250 90) scale(0.7)" fill="#fff" opacity="0.9"><ellipse cx="0" cy="0" rx="70" ry="34"/><ellipse cx="55" cy="-18" rx="52" ry="40"/><ellipse cx="110" cy="2" rx="62" ry="30"/></g>
+  <rect x="0" y="520" width="1600" height="400" fill="#2e9cca"/>
+   <path d="M0 550 Q100 530 200 550 T400 550 T600 550 T800 550 T1000 550 T1200 550 T1400 550 T1600 550 V580 H0Z" fill="#5cc3e6" opacity="0.6"/>
+  <path d="M0 640 Q400 600 800 630 T1600 610 V1000 H0Z" fill="#f6d89a"/>
+  <path d="M0 760 Q500 720 1000 760 T1600 750 V1000 H0Z" fill="#f1cb80"/>
+  <g transform="translate(1180 520)">
+    <path d="M0 0 Q140 -110 280 0Z" fill="#e8574a"/><path d="M93 -60 Q140 -110 187 -60 L140 0Z" fill="#fff"/>
+    <rect x="136" y="-6" width="8" height="200" fill="#8a6a4a"/>
+  </g>
+  <g transform="translate(240 640)" fill="#e7bb6a">
+    <rect x="0" y="60" width="240" height="110" rx="8"/>
+    <rect x="30" y="0" width="70" height="80" rx="6"/><rect x="140" y="0" width="70" height="80" rx="6"/>
+    <rect x="80" y="-60" width="80" height="80" rx="6"/>
+    <path d="M30 0 h14 v-12 h14 v12 h14 v-12 h14 v12 M140 0 h14 v-12 h14 v12 h14 v-12 h14 v12 M80 -60 h16 v-14 h16 v14 h16 v-14 h16 v14" fill="none" stroke="#e7bb6a" stroke-width="12"/>
+    <rect x="98" y="110" width="44" height="60" rx="22" fill="#c9974c"/>
+    <path d="M120 -74 V-150" stroke="#1d2433" stroke-width="5"/><path d="M120 -150 L170 -136 L120 -122Z" fill="#2e9cca"/>
+  </g>
+  <g transform="translate(620 860) rotate(-10)"><path d="M-22 10 Q-26 -20 0 -26 Q26 -20 22 10 Z" fill="#f7a8a0"/><path d="M0 8 V-22 M-10 8 L-14 -16 M10 8 L14 -16" stroke="#fff" stroke-width="3" opacity="0.7"/><rect x="-10" y="8" width="20" height="8" rx="4" fill="#f7a8a0"/></g> <g transform="translate(1450 900) rotate(20)"><path d="M-22 10 Q-26 -20 0 -26 Q26 -20 22 10 Z" fill="#ffd27a"/><path d="M0 8 V-22 M-10 8 L-14 -16 M10 8 L14 -16" stroke="#fff" stroke-width="3" opacity="0.7"/><rect x="-10" y="8" width="20" height="8" rx="4" fill="#ffd27a"/></g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice">
+  <!-- Original background drawn for Spelling Quest. -->
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fd6f5"/><stop offset="1" stop-color="#e2f6fd"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#sky)"/>
+  <g transform="translate(160 120) scale(0.9)" fill="#fff" opacity="0.9"><ellipse cx="0" cy="0" rx="70" ry="34"/><ellipse cx="55" cy="-18" rx="52" ry="40"/><ellipse cx="110" cy="2" rx="62" ry="30"/></g> <g transform="translate(1100 160) scale(1)" fill="#fff" opacity="0.9"><ellipse cx="0" cy="0" rx="70" ry="34"/><ellipse cx="55" cy="-18" rx="52" ry="40"/><ellipse cx="110" cy="2" rx="62" ry="30"/></g>
+  <rect x="0" y="360" width="1600" height="400" fill="#1f8bbd"/>
+   <path d="M0 390 Q100 370 200 390 T400 390 T600 390 T800 390 T1000 390 T1200 390 T1400 390 T1600 390 V420 H0Z" fill="#5cc3e6" opacity="0.6"/>
+  <path d="M0 520 Q200 480 400 520 T800 520 T1200 520 T1600 520 V1000 H0Z" fill="#fff" opacity="0.85"/>
+  <path d="M0 545 Q200 505 400 545 T800 545 T1200 545 T1600 545 V1000 H0Z" fill="#d9b77a"/>
+  <path d="M0 640 Q500 610 1000 650 T1600 640 V1000 H0Z" fill="#e8c88a"/>
+  <g fill="#c9a466" opacity="0.7"><ellipse cx="300" cy="760" rx="14" ry="20"/><ellipse cx="360" cy="820" rx="14" ry="20"/><ellipse cx="420" cy="760" rx="14" ry="20"/><ellipse cx="480" cy="820" rx="14" ry="20"/><ellipse cx="540" cy="760" rx="14" ry="20"/></g>
+  <g transform="translate(1180 820) rotate(15)"><path d="M-22 10 Q-26 -20 0 -26 Q26 -20 22 10 Z" fill="#f7a8a0"/><path d="M0 8 V-22 M-10 8 L-14 -16 M10 8 L14 -16" stroke="#fff" stroke-width="3" opacity="0.7"/><rect x="-10" y="8" width="20" height="8" rx="4" fill="#f7a8a0"/></g> <g transform="translate(1320 880) rotate(-20)"><path d="M-22 10 Q-26 -20 0 -26 Q26 -20 22 10 Z" fill="#ffd27a"/><path d="M0 8 V-22 M-10 8 L-14 -16 M10 8 L14 -16" stroke="#fff" stroke-width="3" opacity="0.7"/><rect x="-10" y="8" width="20" height="8" rx="4" fill="#ffd27a"/></g> <g transform="translate(140 900) rotate(5)"><path d="M-22 10 Q-26 -20 0 -26 Q26 -20 22 10 Z" fill="#c7b3f2"/><path d="M0 8 V-22 M-10 8 L-14 -16 M10 8 L14 -16" stroke="#fff" stroke-width="3" opacity="0.7"/><rect x="-10" y="8" width="20" height="8" rx="4" fill="#c7b3f2"/></g>
+</svg>

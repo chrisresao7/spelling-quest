@@ -62,6 +62,7 @@ export function useTheme() {
       speaker: s.speaker || 'hero',
       title: fill(s.title || ''),
       intro: fill(s.intro || ''),
+      prompt: fill(s.prompt || ''),
       outro: fill(s.outro || ''),
       background: asset(s.background),
       item: asset(s.item),

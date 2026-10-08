@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <!-- Original pup drawn for Spelling Quest. -->
+  <ellipse cx="150" cy="288" rx="92" ry="9" fill="#000" opacity="0.12"/>
+  <path d="M206 246 Q250 236 252 190" stroke="#5b8fd9" stroke-width="20" stroke-linecap="round" fill="none"/>
+  <circle cx="252" cy="186" r="11" fill="#2d4c8c"/>
+  <ellipse cx="150" cy="218" rx="64" ry="62" fill="#5b8fd9"/>
+  <ellipse cx="150" cy="234" rx="38" ry="44" fill="#f3dfb2"/>
+  <ellipse cx="110" cy="274" rx="30" ry="15" fill="#f3dfb2" stroke="#2d4c8c" stroke-width="3"/>
+  <ellipse cx="190" cy="274" rx="30" ry="15" fill="#f3dfb2" stroke="#2d4c8c" stroke-width="3"/>
+  <path d="M104 196 Q80 170 66 140" stroke="#5b8fd9" stroke-width="28" stroke-linecap="round" fill="none"/>
+       <circle cx="64" cy="134" r="17" fill="#f3dfb2"/>
+       <path d="M196 196 Q220 170 234 140" stroke="#5b8fd9" stroke-width="28" stroke-linecap="round" fill="none"/>
+       <circle cx="236" cy="134" r="17" fill="#f3dfb2"/>
+  <g>
+    <path d="M84 84 L76 8 L142 50 Z" fill="#5b8fd9" stroke="#5b8fd9" stroke-width="14" stroke-linejoin="round"/>
+    <path d="M94 68 L88 28 L126 54 Z" fill="#f7c9a8" stroke="#f7c9a8" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M216 84 L224 8 L158 50 Z" fill="#5b8fd9" stroke="#5b8fd9" stroke-width="14" stroke-linejoin="round"/>
+    <path d="M206 68 L212 28 L174 52 Z" fill="#f7c9a8" stroke="#f7c9a8" stroke-width="6" stroke-linejoin="round"/>
+    <ellipse cx="150" cy="106" rx="82" ry="66" fill="#5b8fd9"/>
+    <path d="M118 44 Q150 30 182 44 Q172 70 150 74 Q128 70 118 44Z" fill="#2d4c8c"/>
+         <ellipse cx="118" cy="104" rx="22" ry="24" fill="#2d4c8c" opacity="0.55"/>
+         <ellipse cx="182" cy="104" rx="22" ry="24" fill="#2d4c8c" opacity="0.55"/>
+    <ellipse cx="150" cy="142" rx="54" ry="36" fill="#f3dfb2"/>
+    <ellipse cx="92" cy="130" rx="13" ry="8" fill="#ff8fa3" opacity="0.45"/>
+    <ellipse cx="208" cy="130" rx="13" ry="8" fill="#ff8fa3" opacity="0.45"/>
+    <path d="M108 106 Q120 92 132 106" stroke="#1d2433" stroke-width="7" stroke-linecap="round" fill="none"/>
+       <path d="M168 106 Q180 92 192 106" stroke="#1d2433" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M130 122 Q150 110 170 122 Q168 138 150 140 Q132 138 130 122Z" fill="#1d2433"/>
+    <ellipse cx="142" cy="120" rx="6" ry="3" fill="#fff" opacity="0.8"/>
+    <path d="M126 146 Q150 176 174 146 Z" fill="#6b2230" stroke="#1d2433" stroke-width="4" stroke-linejoin="round"/>
+       <ellipse cx="150" cy="161" rx="10" ry="7" fill="#f2849a"/>
+  </g>
+  
+  
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice">
+  <!-- Original background drawn for Spelling Quest. -->
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fcdf3"/><stop offset="1" stop-color="#d6f1fc"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#sky)"/>
+  <g transform="translate(1380 150)"><circle r="100" fill="#fff3b0" opacity="0.5"/><circle r="70" fill="#ffd24a"/></g>
+  <g transform="translate(180 160) scale(1)" fill="#fff" opacity="0.9"><ellipse cx="0" cy="0" rx="70" ry="34"/><ellipse cx="55" cy="-18" rx="52" ry="40"/><ellipse cx="110" cy="2" rx="62" ry="30"/></g> <g transform="translate(820 110) scale(0.8)" fill="#fff" opacity="0.9"><ellipse cx="0" cy="0" rx="70" ry="34"/><ellipse cx="55" cy="-18" rx="52" ry="40"/><ellipse cx="110" cy="2" rx="62" ry="30"/></g>
+  <rect x="0" y="700" width="1600" height="300" fill="#8cd17d"/>
+  <path d="M0 700 Q400 660 800 700 T1600 690 V1000 H0Z" fill="#7cc46c"/>
+  <g transform="translate(980 330)">
+    <rect x="0" y="120" width="460" height="260" fill="#fbe3b8"/>
+    <path d="M-40 130 L230 -20 L500 130 Z" fill="#e36a4a"/>
+    <rect x="-20" y="250" width="500" height="18" fill="#fff"/>
+    <rect x="60" y="160" width="90" height="80" rx="8" fill="#9ad8f5" stroke="#fff" stroke-width="10"/>
+    <rect x="310" y="160" width="90" height="80" rx="8" fill="#9ad8f5" stroke="#fff" stroke-width="10"/>
+    <rect x="190" y="280" width="80" height="100" rx="10" fill="#4f86c6"/>
+    <circle cx="255" cy="332" r="6" fill="#ffd24a"/>
+    <g fill="#fff"><rect x="-10" y="268" width="10" height="112"/><rect x="32" y="268" width="10" height="112"/><rect x="74" y="268" width="10" height="112"/><rect x="116" y="268" width="10" height="112"/><rect x="158" y="268" width="10" height="112"/><rect x="200" y="268" width="10" height="112"/><rect x="242" y="268" width="10" height="112"/><rect x="284" y="268" width="10" height="112"/><rect x="326" y="268" width="10" height="112"/><rect x="368" y="268" width="10" height="112"/><rect x="410" y="268" width="10" height="112"/><rect x="452" y="268" width="10" height="112"/></g>
+  </g>
+  <g transform="translate(240 380)">
+    <path d="M40 330 Q30 180 60 40" stroke="#a8743f" stroke-width="30" fill="none" stroke-linecap="round"/>
+    <g fill="#3fa65a"><path d="M60 40 Q-60 0 -120 80 Q-20 30 60 40Z"/><path d="M60 40 Q180 0 220 90 Q140 30 60 40Z"/><path d="M60 40 Q0 -80 -80 -60 Q10 -40 60 40Z"/><path d="M60 40 Q140 -80 210 -40 Q120 -40 60 40Z"/></g>
+  </g>
+  <g fill="#fff" opacity="0.85"><rect x="0" y="630" width="22" height="100" rx="10"/><rect x="46" y="630" width="22" height="100" rx="10"/><rect x="92" y="630" width="22" height="100" rx="10"/><rect x="138" y="630" width="22" height="100" rx="10"/><rect x="184" y="630" width="22" height="100" rx="10"/><rect x="230" y="630" width="22" height="100" rx="10"/><rect x="276" y="630" width="22" height="100" rx="10"/><rect x="322" y="630" width="22" height="100" rx="10"/><rect x="368" y="630" width="22" height="100" rx="10"/><rect x="414" y="630" width="22" height="100" rx="10"/><rect x="460" y="630" width="22" height="100" rx="10"/><rect x="506" y="630" width="22" height="100" rx="10"/><rect x="552" y="630" width="22" height="100" rx="10"/><rect x="598" y="630" width="22" height="100" rx="10"/><rect x="644" y="630" width="22" height="100" rx="10"/><rect x="690" y="630" width="22" height="100" rx="10"/><rect x="736" y="630" width="22" height="100" rx="10"/><rect x="782" y="630" width="22" height="100" rx="10"/><rect x="828" y="630" width="22" height="100" rx="10"/><rect x="874" y="630" width="22" height="100" rx="10"/><rect x="920" y="630" width="22" height="100" rx="10"/><rect x="966" y="630" width="22" height="100" rx="10"/><rect x="0" y="650" width="1010" height="14"/><rect x="0" y="690" width="1010" height="14"/></g>
+</svg>

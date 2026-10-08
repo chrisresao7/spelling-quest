@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice">
+  <!-- Original background drawn for Spelling Quest. -->
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fcdf3"/><stop offset="1" stop-color="#d6f1fc"/></linearGradient></defs>
+<rect width="1600" height="1000" fill="url(#sky)"/>
+  <g transform="translate(1350 140)"><circle r="90" fill="#fff3b0" opacity="0.5"/><circle r="60" fill="#ffd24a"/></g> <g transform="translate(300 130) scale(1)" fill="#fff" opacity="0.9"><ellipse cx="0" cy="0" rx="70" ry="34"/><ellipse cx="55" cy="-18" rx="52" ry="40"/><ellipse cx="110" cy="2" rx="62" ry="30"/></g>
+  <rect x="0" y="450" width="1600" height="400" fill="#2e9cca"/>
+   <path d="M0 480 Q100 460 200 480 T400 480 T600 480 T800 480 T1000 480 T1200 480 T1400 480 T1600 480 V510 H0Z" fill="#5cc3e6" opacity="0.6"/>
+  <path d="M0 600 Q400 570 800 600 T1600 590 V1000 H0Z" fill="#f1d396"/>
+  <g fill="#8d97a8"><path d="M60 760 Q90 640 230 650 Q360 660 380 780 Z"/><path d="M1150 780 Q1180 650 1330 640 Q1520 650 1560 790 Z"/></g>
+  <g fill="#6c7689"><path d="M220 790 Q240 700 330 710 Q400 730 400 800Z"/></g>
+  <ellipse cx="760" cy="840" rx="260" ry="60" fill="#4bb5d8"/><ellipse cx="760" cy="830" rx="230" ry="44" fill="#7fd0ea"/>
+  <g transform="translate(1320 880)"><ellipse rx="44" ry="28" fill="#e8574a"/><circle cx="-14" cy="-30" r="8" fill="#e8574a"/><circle cx="14" cy="-30" r="8" fill="#e8574a"/><circle cx="-14" cy="-32" r="4" fill="#1d2433"/><circle cx="14" cy="-32" r="4" fill="#1d2433"/><path d="M-44 -6 q-30 -20 -20 -40 M44 -6 q30 -20 20 -40" stroke="#e8574a" stroke-width="12" fill="none" stroke-linecap="round"/></g>
+  <path d="M520 900 l12 -26 l12 26 l28 4 l-20 18 l6 28 l-26 -14 l-26 14 l6 -28 l-20 -18Z" fill="#ff9f4a"/>
+</svg>
