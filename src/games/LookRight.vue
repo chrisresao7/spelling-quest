@@ -37,7 +37,7 @@ function newWord() {
   if (!w) return
   wrong.value = new Set()
   solved.value = false
-  options.value = shuffle([w.text, ...lookalikes(w, props.week.graphemes)])
+  options.value = shuffle([w.text, ...lookalikes(w, props.week.graphemes, { isWord: props.week.isWord })])
   sayWord(w.text)
 }
 

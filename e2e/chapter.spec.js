@@ -6,7 +6,9 @@ import { parseWeek } from '../src/lib/words.js'
 // Set SCREENSHOTS=dir to save a picture of each scene.
 const week = parseWeek(JSON.parse(readFileSync('public/content/weeks/2026-09-30.json', 'utf8')))
 const byText = Object.fromEntries(week.words.map((w) => [w.text, w]))
-const byGap = Object.fromEntries(week.words.map((w) => [`${w.prefix}?${w.middle}${w.suffix}`, w]))
+// Pick the Patch shows one gap, or two for a split spelling: "s?l", "m?d?".
+const gapOf = (w) => (w.pattern.includes('_') ? `${w.prefix}?${w.middle}?${w.suffix}` : `${w.prefix}?${w.middle}${w.suffix}`)
+const byGap = Object.fromEntries(week.words.map((w) => [gapOf(w), w]))
 
 async function snap(page, testInfo, name) {
   if (!process.env.SCREENSHOTS) return

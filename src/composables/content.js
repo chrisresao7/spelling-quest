@@ -28,3 +28,14 @@ export async function loadThemeConfig(id) {
   const config = await getJson(`themes/${id}/theme.json`)
   return { ...config, id, root: `${base}/themes/${id}/` }
 }
+
+// Common English words, so a real word is never shown as a "wrong" spelling.
+// Built by scripts/make-wordlist.mjs. If it can't load, the games still work.
+let dictionary = null
+export function loadDictionary() {
+  dictionary ||= fetch(`${base}/words-en.txt`)
+    .then((res) => (res.ok ? res.text() : ''))
+    .then((text) => new Set(text.split('\n').filter(Boolean)))
+    .catch(() => new Set())
+  return dictionary
+}

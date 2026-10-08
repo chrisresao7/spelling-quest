@@ -39,7 +39,7 @@ function newTurn() {
   if (!w) return
   misses = 0
   turn.value++
-  const wrong = lookalikes(w, [], { extra: props.week.trickyMistakes?.[w.text] })
+  const wrong = lookalikes(w, [], { extra: props.week.trickyMistakes?.[w.text], isWord: props.week.isWord })
   const lanes = shuffle([0, 1, 2])
   bubbles.value = shuffle([w.text, ...wrong]).map((text, i) => ({
     text,

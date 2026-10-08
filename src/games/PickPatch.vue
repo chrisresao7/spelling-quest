@@ -29,6 +29,7 @@ const solved = ref(false)
 let busy = false
 
 const word = computed(() => round.current.value)
+const split = computed(() => word.value?.pattern?.includes('_'))
 
 function newWord() {
   wrong.value = new Set()
@@ -69,7 +70,9 @@ onMounted(newWord)
       <div :key="word.text" class="flag panel pop">
         <MarkedWord v-if="solved" :word="word" />
         <template v-else>
-          <span>{{ word.prefix }}</span><span class="gap">?</span><span>{{ word.middle }}{{ word.suffix }}</span>
+          <!-- A split spelling gets two gaps (m _ d _), so it never looks like a two-letter spelling. -->
+          <span>{{ word.prefix }}</span><span class="gap" :class="{ one: split }">?</span><span>{{ word.middle }}</span
+          ><template v-if="split"><span class="gap" :class="{ one: split }">?</span></template><span>{{ word.suffix }}</span>
         </template>
       </div>
       <SpeakButton :text="word.text" />
@@ -115,6 +118,9 @@ onMounted(newWord)
   border-bottom: 6px dashed var(--sq-focus);
   color: var(--sq-muted);
   text-align: center;
+}
+.gap.one {
+  min-width: 0.9em;
 }
 .choices {
   display: grid;

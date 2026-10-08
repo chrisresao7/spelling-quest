@@ -8,7 +8,7 @@ import PickPatch from '../games/PickPatch.vue'
 import SpellIt from '../games/SpellIt.vue'
 import LookRight from '../games/LookRight.vue'
 import TrickyCatch from '../games/TrickyCatch.vue'
-import { loadWeek } from '../composables/content.js'
+import { loadDictionary, loadWeek } from '../composables/content.js'
 import { useTheme } from '../composables/useTheme.js'
 import { useProgress } from '../stores/progress.js'
 
@@ -25,7 +25,8 @@ const sticker = ref(null)
 
 watchEffect(async () => {
   try {
-    week.value = await loadWeek(props.weekId)
+    const [w, dict] = await Promise.all([loadWeek(props.weekId), loadDictionary()])
+    week.value = { ...w, isWord: (s) => dict.has(s) }
   } catch (e) {
     error.value = e.message
   }

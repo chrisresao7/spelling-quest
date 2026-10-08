@@ -117,9 +117,12 @@ export function wrongSpellings(text) {
 /**
  * Up to `count` wrong spellings to show beside a word. Ones listed in the week file come first,
  * then swaps of this week's spellings of the sound, then general look-alikes.
+ *
+ * RULE: a wrong option is never a real word. "sale" is a fine spelling, just not of "sail",
+ * so showing it as wrong would teach the child something untrue. `isWord` checks the dictionary.
  */
-export function lookalikes(word, graphemes, { extra = [], count = 2, rand = Math.random } = {}) {
+export function lookalikes(word, graphemes, { extra = [], count = 2, rand = Math.random, isWord = () => false } = {}) {
   const pick = (list) => [...list].sort(() => rand() - 0.5)
   const all = [...new Set([...pick(extra), ...pick(misspellings(word, graphemes)), ...pick(wrongSpellings(word.text))])]
-  return all.filter((s) => s !== word.text).slice(0, count)
+  return all.filter((s) => s !== word.text && !isWord(s)).slice(0, count)
 }

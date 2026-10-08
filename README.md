@@ -17,6 +17,13 @@ A story-based spelling game for a tablet. Each school week is a chapter: two pup
 
 Words are read aloud by the browser's own voice (a British voice when the device has one). Progress and stickers are saved in the browser on that device.
 
+## Learning rules
+
+Two rules always apply, in every game and theme (details in [CLAUDE.md](CLAUDE.md)):
+
+1. A wrong option is never a real word: *sale* is never shown as the wrong spelling of *sail*.
+2. A split spelling is shown with two gaps: *made* with the sound missing is **m _ d _**, not **m _ d**.
+
 ## Adding a week
 
 Add a file to `public/content/weeks/`, named after the Monday of that week, and add its name to `public/content/weeks/index.json`. You can do this in GitHub's web editor.
