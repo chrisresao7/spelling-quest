@@ -1,5 +1,7 @@
 # Making a theme
 
+The learning rules in [CLAUDE.md](CLAUDE.md) apply to every theme: wrong spellings are never real words, and split spellings like a‑e are shown with two gaps (m _ d _). A theme only changes looks and story text, so it can't break them, but any story line that shows spellings must follow them too.
+
 A theme changes how the game looks and the story it tells. It never changes the game itself, so any theme works with any week's words.
 
 ```
