@@ -9,9 +9,11 @@ A story-based spelling game for a tablet. Each school week is a chapter: two pup
 1. **Story page** sets the scene.
 2. **Sound Sort**: put each word in the bag for its spelling of the sound (ai / ay / a‑e / ea). Tap a bag or drag the word.
 3. **Pick the Patch**: hear the word, see it with the sound missing, pick the right letters. A wrong pick shows the teacher's tip.
-4. **Spell It**: look, say, cover, then build the word from letter tiles. Mistakes are shown in red and the word comes back later in the round.
-5. **Tricky words** (like *said*) use the same look–cover–spell steps.
-6. **The end**: a sticker for the sticker book.
+4. **Which Looks Right?**: hear the word and tap the one spelt right out of three (*sail*, *sayl*, *sale*).
+5. **Spell It**: look, say, cover, then build the word from letter tiles. Mistakes are shown in red and the word comes back later in the round.
+6. **Tricky words** (like *said*) use the same look–cover–spell steps.
+7. **Tricky Word Catch**: bubbles float up with different spellings of a tricky word; catch the right one before it floats away.
+8. **The end**: a sticker for the sticker book.
 
 Words are read aloud by the browser's own voice (a British voice when the device has one). Progress and stickers are saved in the browser on that device.
 
@@ -27,11 +29,12 @@ Add a file to `public/content/weeks/`, named after the Monday of that week, and 
   "graphemes": ["ee", "ea", "e_e", "y"],
   "words": ["s[ee]", "b[ea]ch", "th[e]s[e]", "happ[y]"],
   "tricky": ["was"],
+  "trickyMistakes": { "was": ["woz", "wos"] },
   "tips": { "y": "'y' makes the ee sound at the end of a long word." }
 }
 ```
 
-Square brackets mark the letters that make the sound (the red letters on the school sheet). A split spelling like a‑e gets two pairs of brackets: `m[a]k[e]`, and its grapheme is written `a_e`. Every word's spelling must be in `graphemes`, or the chapter won't load.
+Square brackets mark the letters that make the sound (the red letters on the school sheet). A split spelling like a‑e gets two pairs of brackets: `m[a]k[e]`, and its grapheme is written `a_e`. Every word's spelling must be in `graphemes`, or the chapter won't load. `trickyMistakes` is optional: it lists wrong spellings to use in Tricky Word Catch, and the game makes its own up if it's left out.
 
 ## Themes
 

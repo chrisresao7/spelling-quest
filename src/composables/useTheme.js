@@ -31,7 +31,8 @@ export function fill(text, vars = {}) {
     hero: t?.characters?.hero?.name ?? 'Pup',
     sidekick: t?.characters?.sidekick?.name ?? 'Friend',
   }
-  return (text || '').replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? names[k] ?? '')
+  // Unknown {placeholders} are left in for the game to fill, e.g. {word} in a scene prompt.
+  return (text || '').replace(/\{(\w+)\}/g, (m, k) => vars[k] ?? names[k] ?? m)
 }
 
 export function useTheme() {

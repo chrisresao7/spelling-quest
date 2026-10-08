@@ -63,6 +63,19 @@ test('a whole chapter can be played on a tablet', async ({ page }, testInfo) => 
     await expect(page.locator('.choice.right')).toHaveCount(0, { timeout: 5000 })
   }
 
+  // Which Looks Right?
+  await expect(page.getByRole('heading', { name: 'The ice-cream van' })).toBeVisible()
+  await page.getByRole('button', { name: 'Let’s go!' }).click()
+  for (let i = 0; i < week.words.length; i++) {
+    const signs = page.locator('.sign')
+    await expect(signs).toHaveCount(3)
+    if (i === 1) await snap(page, testInfo, '4b-look-right')
+    const texts = (await signs.allInnerTexts()).map((t) => t.trim())
+    const right = texts.find((t) => byText[t])
+    await signs.filter({ hasText: new RegExp(`^\\s*${right}\\s*$`) }).click()
+    await expect(page.locator('.sign.right')).toHaveCount(0, { timeout: 5000 })
+  }
+
   // Spell It
   await expect(page.getByRole('heading', { name: 'Write in the sand' })).toBeVisible()
   await page.getByRole('button', { name: 'Let’s go!' }).click()
@@ -85,6 +98,22 @@ test('a whole chapter can be played on a tablet', async ({ page }, testInfo) => 
   await expect(page.getByRole('heading', { name: 'Tricky rock pool' })).toBeVisible()
   await page.getByRole('button', { name: 'Let’s go!' }).click()
   await spellRound(page, week.tricky.length)
+
+  // Tricky Word Catch: tap the bubble spelt right (dispatched, because the bubbles keep moving)
+  const tricky = new Set(week.tricky.map((w) => w.text))
+  await expect(page.getByRole('heading', { name: 'Bubble catch' })).toBeVisible()
+  await page.getByRole('button', { name: 'Let’s go!' }).click()
+  for (let i = 0; i < week.tricky.length * 2; i++) {
+    const bubbles = page.locator('.pool .bubble:not(.caught)')
+    await expect(bubbles).toHaveCount(3)
+    if (i === 0) {
+      await page.waitForTimeout(3500)
+      await snap(page, testInfo, '7b-tricky-catch')
+    }
+    const texts = (await bubbles.allInnerTexts()).map((t) => t.trim())
+    await bubbles.nth(texts.findIndex((t) => tricky.has(t))).dispatchEvent('click')
+    await expect(page.locator('.pool .bubble.caught')).toHaveCount(0, { timeout: 5000 })
+  }
 
   // The end, with a sticker
   await expect(page.getByText('You won a sticker!')).toBeVisible()

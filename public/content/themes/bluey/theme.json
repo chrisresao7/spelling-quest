@@ -3,14 +3,22 @@
   "characters": {
     "hero": {
       "name": "Bluey",
-      "art": { "happy": "art/pup-blue-happy.svg", "thinking": "art/pup-blue-thinking.svg" }
+      "art": {
+        "happy": "art/pup-blue-happy.svg",
+        "thinking": "art/pup-blue-thinking.svg"
+      }
     },
     "sidekick": {
       "name": "Bingo",
-      "art": { "happy": "art/pup-red-happy.svg", "thinking": "art/pup-red-thinking.svg" }
+      "art": {
+        "happy": "art/pup-red-happy.svg",
+        "thinking": "art/pup-red-thinking.svg"
+      }
     }
   },
-  "home": { "background": "art/bg-beach.svg" },
+  "home": {
+    "background": "art/bg-beach.svg"
+  },
   "lines": {
     "correct": [
       "Hooray! {word}!",
@@ -24,8 +32,12 @@
       "Not that one. Listen again!",
       "Hmm, let's think about it."
     ],
-    "prompt": ["Which bag does this word go in?"],
-    "chapterEnd": ["Best. Beach day. Ever!"]
+    "prompt": [
+      "Which bag does this word go in?"
+    ],
+    "chapterEnd": [
+      "Best. Beach day. Ever!"
+    ]
   },
   "story": {
     "title": "Beach Day",
@@ -51,8 +63,16 @@
         "background": "art/bg-beach.svg",
         "item": "art/item-flag.svg"
       },
-      "spellIt": {
+      "lookRight": {
         "speaker": "hero",
+        "title": "The ice-cream van",
+        "intro": "Time for an ice cream! But the ice-cream man has written his sign three different ways. Listen to the word and find the one that's spelt right.",
+        "prompt": "Which one is spelt right?",
+        "background": "art/bg-kiosk.svg",
+        "item": "art/item-cone.svg"
+      },
+      "spellIt": {
+        "speaker": "sidekick",
         "title": "Write in the sand",
         "intro": "Let's write the words in the wet sand before the waves wash them away! Look at the word, then spell it with the letters.",
         "prompt": "Look at the word and say it. Tap the button when you're ready!",
@@ -60,12 +80,20 @@
         "item": "art/item-wave.svg"
       },
       "tricky": {
-        "speaker": "sidekick",
+        "speaker": "hero",
         "title": "Tricky rock pool",
         "intro": "Two tricky words are hiding in the rock pool! They don't follow the rules, so we just have to remember them.",
         "prompt": "This is a tricky word. Look really carefully!",
         "background": "art/bg-rockpool.svg",
         "item": "art/item-shell.svg"
+      },
+      "trickyCatch": {
+        "speaker": "sidekick",
+        "title": "Bubble catch",
+        "intro": "Look, the tricky words are floating up out of the rock pool in bubbles! Listen, then catch the bubble that's spelt right before it floats away.",
+        "prompt": "Listen, then catch the bubble that's spelt right!",
+        "background": "art/bg-rockpool.svg",
+        "item": "art/item-bubble.svg"
       }
     }
   },

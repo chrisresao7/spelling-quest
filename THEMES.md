@@ -31,7 +31,7 @@ Asking Claude for "a new theme: unicorns at the zoo" does all of this in one pul
 | `lines` | Lists of things the characters say; one is picked at random. `correct` can use `{word}`. Also `tryAgain`, `prompt` and `chapterEnd`. |
 | `story.title`, `story.intro`, `story.background` | The opening page. |
 | `story.endTitle`, `story.ending`, `story.endBackground` | The last page, where the sticker is given. |
-| `story.scenes.<scene>` | One per game: `soundSort`, `pickPatch`, `spellIt`, `tricky`. Each has `speaker` (`hero` or `sidekick`), `title`, `intro` (the story page before it), `prompt` (what the character says while playing), `background` and `item` (a small picture that moves along the progress bar). |
+| `story.scenes.<scene>` | One per game: `soundSort`, `pickPatch`, `lookRight`, `spellIt`, `tricky`, `trickyCatch`. Each has `speaker` (`hero` or `sidekick`), `title`, `intro` (the story page before it), `prompt` (what the character says while playing), `background` and `item` (a small picture that moves along the progress bar). |
 | `rewards` | Sticker pictures, given in order, one per finished chapter. |
 
 Any text can use `{hero}` and `{sidekick}` for the characters' names.

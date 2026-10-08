@@ -1,15 +1,37 @@
 {
   "name": "My New Theme",
   "characters": {
-    "hero": { "name": "Hero", "art": { "happy": "art/hero-happy.svg", "thinking": "art/hero-thinking.svg" } },
-    "sidekick": { "name": "Friend", "art": { "happy": "art/friend-happy.svg", "thinking": "art/friend-thinking.svg" } }
+    "hero": {
+      "name": "Hero",
+      "art": {
+        "happy": "art/hero-happy.svg",
+        "thinking": "art/hero-thinking.svg"
+      }
+    },
+    "sidekick": {
+      "name": "Friend",
+      "art": {
+        "happy": "art/friend-happy.svg",
+        "thinking": "art/friend-thinking.svg"
+      }
+    }
   },
-  "home": { "background": "art/bg-home.svg" },
+  "home": {
+    "background": "art/bg-home.svg"
+  },
   "lines": {
-    "correct": ["Brilliant! {word}!"],
-    "tryAgain": ["So close! Have another go."],
-    "prompt": ["Which bag does this word go in?"],
-    "chapterEnd": ["What an adventure!"]
+    "correct": [
+      "Brilliant! {word}!"
+    ],
+    "tryAgain": [
+      "So close! Have another go."
+    ],
+    "prompt": [
+      "Which bag does this word go in?"
+    ],
+    "chapterEnd": [
+      "What an adventure!"
+    ]
   },
   "story": {
     "title": "Story title",
@@ -19,11 +41,46 @@
     "ending": "Closing page of the story.",
     "endBackground": "art/bg-home.svg",
     "scenes": {
-      "soundSort": { "speaker": "hero", "title": "Scene 1", "intro": "Sort the words by their spelling.", "background": "art/bg-home.svg" },
-      "pickPatch": { "speaker": "sidekick", "title": "Scene 2", "intro": "Pick the missing letters.", "background": "art/bg-home.svg" },
-      "spellIt": { "speaker": "hero", "title": "Scene 3", "intro": "Look, cover, spell.", "background": "art/bg-home.svg" },
-      "tricky": { "speaker": "sidekick", "title": "Scene 4", "intro": "Remember the tricky words.", "background": "art/bg-home.svg" }
+      "soundSort": {
+        "speaker": "hero",
+        "title": "Scene 1",
+        "intro": "Sort the words by their spelling.",
+        "background": "art/bg-home.svg"
+      },
+      "pickPatch": {
+        "speaker": "sidekick",
+        "title": "Scene 2",
+        "intro": "Pick the missing letters.",
+        "background": "art/bg-home.svg"
+      },
+      "lookRight": {
+        "speaker": "hero",
+        "title": "Scene 3",
+        "intro": "Find the word that's spelt right.",
+        "background": "art/bg-home.svg"
+      },
+      "spellIt": {
+        "speaker": "hero",
+        "title": "Scene 4",
+        "intro": "Look, cover, spell.",
+        "background": "art/bg-home.svg"
+      },
+      "tricky": {
+        "speaker": "sidekick",
+        "title": "Scene 5",
+        "intro": "Remember the tricky words.",
+        "background": "art/bg-home.svg"
+      },
+      "trickyCatch": {
+        "speaker": "sidekick",
+        "title": "Scene 6",
+        "intro": "Catch the tricky word.",
+        "prompt": "Listen, then catch the bubble that's spelt right!",
+        "background": "art/bg-home.svg"
+      }
     }
   },
-  "rewards": ["art/sticker-1.svg"]
+  "rewards": [
+    "art/sticker-1.svg"
+  ]
 }
