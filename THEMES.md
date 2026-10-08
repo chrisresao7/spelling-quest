@@ -46,7 +46,7 @@ Each theme has its own voices. The `voice` block in `theme.json` picks a voice f
 ```json
 "voice": {
   "engine": "google",
-  "narrator": { "name": "en-AU-Neural2-B", "rate": 0.95 },
+  "narrator": { "name": "en-AU-Chirp3-HD-Schedar", "rate": 1 },
   "hero": { "name": "en-AU-Neural2-C", "rate": 1.05, "pitch": 3 },
   "sidekick": { "name": "en-AU-Neural2-A", "rate": 1.08, "pitch": 5 },
   "word": { "name": "en-GB-Neural2-A", "rate": 0.8 },

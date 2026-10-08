@@ -19,8 +19,8 @@
   "voice": {
     "engine": "google",
     "narrator": {
-      "name": "en-AU-Neural2-B",
-      "rate": 0.95
+      "name": "en-AU-Chirp3-HD-Schedar",
+      "rate": 1
     },
     "hero": {
       "name": "en-AU-Neural2-C",
