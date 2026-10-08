@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from './views/HomeView.vue'
 import ChapterView from './views/ChapterView.vue'
 import StickersView from './views/StickersView.vue'
+import GrownUpsView from './views/GrownUpsView.vue'
 
 // Hash URLs (#/chapter/...) work on any static host with no extra set-up.
 export const router = createRouter({
@@ -10,5 +11,6 @@ export const router = createRouter({
     { path: '/', name: 'home', component: HomeView },
     { path: '/chapter/:weekId', name: 'chapter', component: ChapterView, props: true },
     { path: '/stickers', name: 'stickers', component: StickersView },
+    { path: '/grown-ups', name: 'grown-ups', component: GrownUpsView },
   ],
 })

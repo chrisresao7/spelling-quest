@@ -6,14 +6,14 @@ import { loadThemeConfig } from '../composables/content.js'
 import { useTheme } from '../composables/useTheme.js'
 import { speak, stopSpeaking } from '../composables/useSpeech.js'
 import { useProgress } from '../stores/progress.js'
+import { GAME_LINES, stickerName } from '../lib/gameLines.js'
 
 const { theme, asset } = useTheme()
 const progress = useProgress()
 const others = ref([])
 const popped = ref(null)
 
-// "art/sticker-crab.svg" -> "crab"
-const nameOf = (art) => art.split('/').pop().replace(/\.\w+$/, '').replace(/^sticker-/, '').replace(/-/g, ' ')
+const nameOf = stickerName
 
 function countOf(themeId, art) {
   return progress.stickers.filter((s) => s.theme === themeId && s.art === art).length
@@ -39,7 +39,7 @@ onMounted(async () => {
 })
 
 function tap(s) {
-  if (!s.count) return speak('Play a chapter to win this sticker!')
+  if (!s.count) return speak(GAME_LINES.stickerLocked)
   popped.value = s.art
   speak(nameOf(s.art))
 }

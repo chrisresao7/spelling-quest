@@ -11,6 +11,7 @@ import { canSpeak, sayWord } from '../composables/useSpeech.js'
 import { lookalikes } from '../lib/words.js'
 import { shuffle } from '../lib/queue.js'
 import { useProgress } from '../stores/progress.js'
+import { GAME_LINES, spellOut } from '../lib/gameLines.js'
 
 const props = defineProps({
   week: { type: Object, required: true },
@@ -53,7 +54,7 @@ function newTurn() {
 }
 
 function fillPrompt(text) {
-  return (s.prompt || 'Listen, then catch the bubble that’s spelt right!').replace('{word}', text)
+  return (s.prompt || GAME_LINES.catchPrompt).replace('{word}', text)
 }
 
 function finish(gotIt) {
@@ -79,7 +80,7 @@ function tap(b) {
     b.state = 'popped'
     misses++
     mood.value = 'thinking'
-    say.value = `Oops, that one says ${b.text.split('').join(' ')}. Keep looking!`
+    say.value = GAME_LINES.catchOops.replace('{letters}', spellOut(b.text))
   }
 }
 
@@ -88,7 +89,7 @@ function floatedAway(b) {
   if (busy || b.state !== 'up' || b.text !== word.value.text) return
   progress.recordAnswer(word.value.text, false)
   mood.value = 'thinking'
-  say.value = `It floated away! It's spelt ${b.text.split('').join(' ')}. We'll try again.`
+  say.value = GAME_LINES.catchAway.replace('{letters}', spellOut(b.text))
   finish(false)
 }
 

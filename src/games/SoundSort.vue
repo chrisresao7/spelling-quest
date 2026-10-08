@@ -5,12 +5,14 @@ import { computed, onMounted, reactive, ref } from 'vue'
 import SceneFrame from '../components/SceneFrame.vue'
 import CharacterBubble from '../components/CharacterBubble.vue'
 import SpeakButton from '../components/SpeakButton.vue'
+import SoundButton from '../components/SoundButton.vue'
 import MarkedWord from '../components/MarkedWord.vue'
 import { useTheme } from '../composables/useTheme.js'
 import { useRound } from '../composables/useRound.js'
 import { sayWord } from '../composables/useSpeech.js'
 import { graphemeLabel } from '../lib/words.js'
 import { useProgress } from '../stores/progress.js'
+import { GAME_LINES } from '../lib/gameLines.js'
 
 const props = defineProps({
   week: { type: Object, required: true },
@@ -24,7 +26,7 @@ const s = scene(props.sceneKey)
 
 const round = useRound(props.week.words.filter((w) => w.pattern))
 const sorted = reactive(Object.fromEntries(props.week.graphemes.map((g) => [g, []])))
-const say = ref(s.prompt || line('prompt') || 'Which bag does this word go in?')
+const say = ref(s.prompt || line('prompt') || GAME_LINES.soundSortPrompt)
 const mood = ref('happy')
 const shaking = ref(null)
 const showAnswer = ref(false)
@@ -111,6 +113,7 @@ onMounted(newWord)
         <MarkedWord :word="word" :highlight="landed || showAnswer" />
       </div>
       <SpeakButton :text="word.text" />
+      <SoundButton :sound="week.sound" />
     </div>
 
     <div class="buckets">

@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import { parseWeek } from '../src/lib/words.js'
+import { planClips, spokenLines } from '../src/lib/voice.js'
+import { encodeWav } from '../src/lib/wav.js'
 
 // Plays the first chapter from start to sticker, answering everything right.
 // Set SCREENSHOTS=dir to save a picture of each scene.
@@ -9,6 +11,28 @@ const byText = Object.fromEntries(week.words.map((w) => [w.text, w]))
 // Pick the Patch shows one gap, or two for a split spelling: "s?l", "m?d?".
 const gapOf = (w) => (w.pattern.includes('_') ? `${w.prefix}?${w.middle}?${w.suffix}` : `${w.prefix}?${w.middle}${w.suffix}`)
 const byGap = Object.fromEntries(week.words.map((w) => [gapOf(w), w]))
+
+// Stand-in voice clips: every line the generator would make, each a short beep.
+const theme = JSON.parse(readFileSync('public/content/themes/bluey/theme.json', 'utf8'))
+const lines = spokenLines(theme, [week])
+const clipSet = new Set(lines.map((l) => l.key))
+const beep = Buffer.from(encodeWav(Float32Array.from({ length: 2400 }, (_, i) => 0.3 * Math.sin(i / 4)), 24000))
+
+async function withVoiceClips(page) {
+  const played = []
+  await page.route('**/themes/bluey/voice/manifest.json', (r) => r.fulfill({ json: { clips: [...clipSet] } }))
+  await page.route('**/themes/bluey/voice/*.mp3', (r) => {
+    played.push(r.request().url().split('/').pop())
+    return r.fulfill({ body: beep, contentType: 'audio/mpeg' })
+  })
+  await page.addInitScript(() => {
+    window.__sqSpoken = []
+    window.__sqBrowserVoice = []
+    const say = window.speechSynthesis?.speak?.bind(window.speechSynthesis)
+    if (say) window.speechSynthesis.speak = (u) => (window.__sqBrowserVoice.push(u.text), say(u))
+  })
+  return played
+}
 
 async function snap(page, testInfo, name) {
   if (!process.env.SCREENSHOTS) return
@@ -31,6 +55,7 @@ async function spellRound(page, count) {
 }
 
 test('a whole chapter can be played on a tablet', async ({ page }, testInfo) => {
+  const played = await withVoiceClips(page)
   await page.goto('/')
   await expect(page.getByRole('heading', { name: 'Spelling Quest' })).toBeVisible()
   await snap(page, testInfo, '1-home')
@@ -123,4 +148,13 @@ test('a whole chapter can be played on a tablet', async ({ page }, testInfo) => 
   await page.getByRole('button', { name: 'Sticker book' }).click()
   await expect(page.getByText(/1 of 8 Beach Day stickers/)).toBeVisible()
   await snap(page, testInfo, '9-stickers')
+
+  // Everything that was said is covered by the theme's voice clips, and was played from them.
+  const spoken = await page.evaluate(() => window.__sqSpoken)
+  const has = (role) => (t) => lines.some((l) => l.role === role && l.text === t)
+  expect(spoken.length).toBeGreaterThan(40)
+  expect(spoken.filter(({ role, text }) => !planClips(text, has(role)))).toEqual([])
+  expect(played.length).toBeGreaterThan(20)
+  expect(played.every((f) => clipSet.has(f.replace('.mp3', '')))).toBe(true)
+  expect(await page.evaluate(() => window.__sqBrowserVoice)).toEqual([])
 })

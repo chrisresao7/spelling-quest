@@ -11,6 +11,7 @@ import { sayWord } from '../composables/useSpeech.js'
 import { lookalikes } from '../lib/words.js'
 import { shuffle } from '../lib/queue.js'
 import { useProgress } from '../stores/progress.js'
+import { GAME_LINES } from '../lib/gameLines.js'
 
 const props = defineProps({
   week: { type: Object, required: true },
@@ -23,7 +24,7 @@ const progress = useProgress()
 const s = scene(props.sceneKey)
 
 const round = useRound(props.week.words.filter((w) => w.pattern))
-const say = ref(s.prompt || 'Which one is spelt right?')
+const say = ref(s.prompt || GAME_LINES.lookRightPrompt)
 const mood = ref('happy')
 const options = ref([])
 const wrong = ref(new Set())

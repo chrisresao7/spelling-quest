@@ -3,6 +3,7 @@ import { onMounted, ref, watch } from 'vue'
 import { useProgress } from './stores/progress.js'
 import { applyTheme } from './composables/useTheme.js'
 import { loadThemeList } from './composables/content.js'
+import { loadRecordings } from './composables/useRecordings.js'
 
 const progress = useProgress()
 const ready = ref(false)
@@ -19,7 +20,10 @@ async function useThemeFromSettings() {
   }
 }
 
-onMounted(useThemeFromSettings)
+onMounted(() => {
+  useThemeFromSettings()
+  loadRecordings()
+})
 watch(() => progress.settings.theme, useThemeFromSettings)
 </script>
 

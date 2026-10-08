@@ -58,6 +58,7 @@ function weekDate(id) {
           <option v-for="t in themes" :key="t.id" :value="t.id">{{ t.name }}</option>
         </select>
       </label>
+      <RouterLink to="/grown-ups" class="btn secondary grown-ups-link">Grown-ups: record your voice</RouterLink>
     </section>
   </div>
 </template>
@@ -149,6 +150,11 @@ h2 {
   gap: 10px;
   align-items: center;
   padding: 10px 18px;
+}
+.grown-ups-link {
+  margin-left: auto;
+  min-height: 48px;
+  font-size: 0.95rem;
 }
 select {
   font: inherit;

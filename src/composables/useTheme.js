@@ -1,5 +1,7 @@
 import { computed, ref } from 'vue'
 import { loadThemeConfig } from './content.js'
+import { loadVoice } from './useSpeech.js'
+import { fillText } from '../lib/voice.js'
 
 // The active theme. Components ask it for characters, lines, scene text and art,
 // and never refer to a particular theme by name.
@@ -16,6 +18,7 @@ export async function applyTheme(id) {
   }
   cssLink.href = `${config.root}theme.css`
   document.documentElement.dataset.theme = id
+  await loadVoice(config)
   theme.value = config
   return config
 }
@@ -26,13 +29,8 @@ function pick(list) {
 }
 
 export function fill(text, vars = {}) {
-  const t = theme.value
-  const names = {
-    hero: t?.characters?.hero?.name ?? 'Pup',
-    sidekick: t?.characters?.sidekick?.name ?? 'Friend',
-  }
   // Unknown {placeholders} are left in for the game to fill, e.g. {word} in a scene prompt.
-  return (text || '').replace(/\{(\w+)\}/g, (m, k) => vars[k] ?? names[k] ?? m)
+  return fillText(theme.value, text, vars)
 }
 
 export function useTheme() {

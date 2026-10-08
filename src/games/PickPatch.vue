@@ -4,12 +4,14 @@ import { computed, onMounted, ref } from 'vue'
 import SceneFrame from '../components/SceneFrame.vue'
 import CharacterBubble from '../components/CharacterBubble.vue'
 import SpeakButton from '../components/SpeakButton.vue'
+import SoundButton from '../components/SoundButton.vue'
 import MarkedWord from '../components/MarkedWord.vue'
 import { useTheme } from '../composables/useTheme.js'
 import { useRound } from '../composables/useRound.js'
 import { sayWord } from '../composables/useSpeech.js'
 import { graphemeLabel } from '../lib/words.js'
 import { useProgress } from '../stores/progress.js'
+import { GAME_LINES } from '../lib/gameLines.js'
 
 const props = defineProps({
   week: { type: Object, required: true },
@@ -22,7 +24,7 @@ const progress = useProgress()
 const s = scene(props.sceneKey)
 
 const round = useRound(props.week.words.filter((w) => w.pattern))
-const say = ref(s.prompt || 'Listen, then pick the missing letters!')
+const say = ref(s.prompt || GAME_LINES.pickPatchPrompt)
 const mood = ref('happy')
 const wrong = ref(new Set())
 const solved = ref(false)
@@ -76,6 +78,7 @@ onMounted(newWord)
         </template>
       </div>
       <SpeakButton :text="word.text" />
+      <SoundButton :sound="week.sound" />
     </div>
 
     <div class="choices">

@@ -13,7 +13,7 @@ const props = defineProps({
     class="speak"
     :style="{ width: `${size}px`, height: `${size}px` }"
     aria-label="Hear it again"
-    @click="speak(props.text, { slow: true })"
+    @click="speak(props.text, { role: 'word' })"
   >
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor" />
