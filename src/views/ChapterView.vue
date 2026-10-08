@@ -11,6 +11,7 @@ import TrickyCatch from '../games/TrickyCatch.vue'
 import { loadDictionary, loadWeek } from '../composables/content.js'
 import { useTheme } from '../composables/useTheme.js'
 import { useProgress } from '../stores/progress.js'
+import { GAME_LINES } from '../lib/gameLines.js'
 
 const props = defineProps({ weekId: { type: String, required: true } })
 const router = useRouter()
@@ -67,7 +68,7 @@ function nextStep() {
 
     <StoryCard
       v-else-if="key === 'end'"
-      :title="fill(story.endTitle || 'Hooray!')"
+      :title="fill(story.endTitle || GAME_LINES.endTitle)"
       :text="fill(story.ending) || line('chapterEnd')"
       :speakers="['hero', 'sidekick']"
       :background="asset(story.endBackground || story.background)"

@@ -9,7 +9,8 @@
     "preview": "vite preview --host",
     "test": "vitest run",
     "e2e": "playwright test",
-    "wordlist": "node scripts/make-wordlist.mjs"
+    "wordlist": "node scripts/make-wordlist.mjs",
+    "voice": "node scripts/make-voice.mjs"
   },
   "dependencies": {
     "pinia": "^4.0.3",

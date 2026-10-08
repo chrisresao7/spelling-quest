@@ -10,6 +10,7 @@ import { useRound } from '../composables/useRound.js'
 import { sayWord } from '../composables/useSpeech.js'
 import { shuffle } from '../lib/queue.js'
 import { useProgress } from '../stores/progress.js'
+import { GAME_LINES } from '../lib/gameLines.js'
 
 const props = defineProps({
   words: { type: Array, required: true },
@@ -43,7 +44,7 @@ function look() {
   phase.value = 'look'
   result.value = null
   mood.value = 'happy'
-  say.value = s.prompt || 'Look at the word and say it. When you’re ready, tap the button!'
+  say.value = s.prompt || GAME_LINES.spellItLook
   sayWord(word.value.text)
 }
 
@@ -53,7 +54,7 @@ function cover() {
   slots.value = Array(word.value.text.length).fill(null)
   phase.value = 'build'
   mood.value = 'thinking'
-  say.value = 'Now spell it with the letters!'
+  say.value = GAME_LINES.spellItBuild
   sayWord(word.value.text)
 }
 
@@ -84,7 +85,7 @@ function check() {
     setTimeout(() => advance(true), 1600)
   } else {
     mood.value = 'thinking'
-    say.value = line('tryAgain') + ' Look at the red letters. We’ll try this one again soon.'
+    say.value = `${line('tryAgain')} ${GAME_LINES.spellItMissed}`
   }
 }
 

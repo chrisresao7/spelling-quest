@@ -15,7 +15,14 @@ A story-based spelling game for a tablet. Each school week is a chapter: two pup
 7. **Tricky Word Catch**: bubbles float up with different spellings of a tricky word; catch the right one before it floats away.
 8. **The end**: a sticker for the sticker book.
 
-Words are read aloud by the browser's own voice (a British voice when the device has one). Progress and stickers are saved in the browser on that device.
+Each theme has its own voices, made once as voice clips by Google Cloud Text-to-Speech (an Australian dad reads the Beach Day story; spelling words are said in a British voice). Grown-ups can record the week's sound, and any word, in their own voice from the **Grown-ups** button. Any line with no clip or recording is read by the browser's own voice. Progress and stickers are saved in the browser on that device.
+
+## Voices
+
+- **Theme voices** are MP3 clips in each theme's `voice/` folder, one per line the game can say. GitHub makes them (`.github/workflows/voice.yml`, `npm run voice`) whenever a week or theme changes, using the `GOOGLE_TTS_API_KEY` repository secret, and commits them. Only new lines are sent, and the whole game is a few thousand characters, far inside Google's free monthly allowance. Without the secret nothing breaks; the browser voice is used. See THEMES.md for choosing voices.
+- **Your recordings** (Grown-ups → Record your voice) are saved in the browser and, once the shared store below is set up, on Cloudflare too, so every device that opens the game plays them. The game plays them first: your recording, then the theme's clip, then the browser voice. The week's sound is only ever played from your recording, because a computer voice can't be trusted to say a sound on its own.
+
+To set up the Google key: in the Google Cloud console create a project, add billing, enable **Cloud Text-to-Speech API**, create an API key restricted to that API, and add a small budget alert. Then in GitHub open **Settings → Secrets and variables → Actions** and add it as `GOOGLE_TTS_API_KEY`.
 
 ## Learning rules
 
@@ -54,6 +61,7 @@ npm install
 npm run dev       # play it at the address shown; add --host to try it from a tablet on the same Wi-Fi
 npm test          # word logic tests
 npm run e2e       # plays a whole chapter in a tablet-sized browser
+npm run voice -- --check   # how many voice clips are still to make
 ```
 
 ## Deploying privately (free)
@@ -64,5 +72,7 @@ Hosting is Cloudflare Pages, with Cloudflare Access in front so only the family 
 2. Framework preset **Vue** (or none), build command `npm run build`, output directory `dist`. Under environment variables set `NODE_VERSION` to `22`.
 3. Deploy. Every merge to `main` redeploys automatically, including a new week file added in the GitHub web editor.
 4. To make it private, open the Pages project's **Settings → General → Access policy** and enable it (or create a self-hosted application for the site's address in **Zero Trust → Access → Applications**). Add a policy that allows the family's email addresses. Visitors then get a one-time code by email before they can play. Also protect preview deployments if you share those links.
+
+5. To share recordings between devices, create an R2 bucket in the Cloudflare dashboard (**R2 → Create bucket**, e.g. `spelling-quest-recordings`; the free tier is plenty). In the Pages project open **Settings → Bindings → Add → R2 bucket**, set the variable name to `RECORDINGS` and pick the bucket, then redeploy. The recordings API (`functions/api/recordings`) sits behind the same Access login as the game. Until this is done, recordings stay on the device they were made on.
 
 Search engines are asked not to index the site (`noindex` in `index.html` and `public/_headers`).

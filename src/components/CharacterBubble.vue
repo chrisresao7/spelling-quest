@@ -16,7 +16,7 @@ const { characterArt, characterName } = useTheme()
 watch(
   () => props.text,
   (t) => {
-    if (props.say && t) speak(t)
+    if (props.say && t) speak(t, { role: props.who })
   },
   { immediate: true },
 )
@@ -26,7 +26,7 @@ watch(
   <div class="character">
     <img :key="who + mood" class="pose pop" :src="characterArt(who, mood)" :alt="characterName(who)" />
     <Transition name="bubble" mode="out-in">
-      <button v-if="text" :key="text" class="bubble panel" @click="speak(text)">
+      <button v-if="text" :key="text" class="bubble panel" @click="speak(text, { role: who })">
         <strong class="name">{{ characterName(who) }}</strong>
         <span>{{ text }}</span>
       </button>

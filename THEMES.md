@@ -35,8 +35,33 @@ Asking Claude for "a new theme: unicorns at the zoo" does all of this in one pul
 | `story.endTitle`, `story.ending`, `story.endBackground` | The last page, where the sticker is given. |
 | `story.scenes.<scene>` | One per game: `soundSort`, `pickPatch`, `lookRight`, `spellIt`, `tricky`, `trickyCatch`. Each has `speaker` (`hero` or `sidekick`), `title`, `intro` (the story page before it), `prompt` (what the character says while playing), `background` and `item` (a small picture that moves along the progress bar). |
 | `rewards` | Sticker pictures, given in order, one per finished chapter. |
+| `voice` | Who says what, and in which voice (below). |
 
 Any text can use `{hero}` and `{sidekick}` for the characters' names.
+
+## Voice
+
+Each theme has its own voices. The `voice` block in `theme.json` picks a voice for each speaker:
+
+```json
+"voice": {
+  "engine": "google",
+  "narrator": { "name": "en-AU-Neural2-B", "rate": 0.95 },
+  "hero": { "name": "en-AU-Neural2-C", "rate": 1.05, "pitch": 3 },
+  "sidekick": { "name": "en-AU-Neural2-A", "rate": 1.08, "pitch": 5 },
+  "word": { "name": "en-GB-Neural2-A", "rate": 0.8 },
+  "browser": { "lang": "en-GB" }
+}
+```
+
+- `narrator` reads the story pages and the sticker book. `hero` and `sidekick` say the speech-bubble lines. `word` says the spelling words, slowly. Keep `word` a British voice so words sound the way school says them.
+- `name` is a Google Cloud Text-to-Speech voice. Its first part is the accent (`en-AU` Australian, `en-GB` British). `rate` is speed (1 is normal) and `pitch` is in semitones (0 is normal; some voices ignore it).
+- `browser` is what the tablet's own voice uses for any line that has no clip yet.
+- Use stock voices only. Never copy a real person's or a TV character's voice.
+
+The clips themselves are made by GitHub (`.github/workflows/voice.yml` runs `npm run voice`) whenever a theme or week changes, and saved in the theme's `voice/` folder. Don't edit that folder by hand. To hear what voices there are, run the **Voice clips** workflow from the Actions tab with "Make voice samples" ticked.
+
+Grown-ups can also record the week's sound, and any word, in their own voice from the home screen's **Grown-ups** button. Those recordings are used before any clip.
 
 ## theme.css
 

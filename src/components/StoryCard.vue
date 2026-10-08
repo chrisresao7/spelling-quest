@@ -15,7 +15,7 @@ const props = defineProps({
 const emit = defineEmits(['next'])
 const { characterArt, characterName } = useTheme()
 
-onMounted(() => speak([props.title, props.text].filter(Boolean).join('. ')))
+onMounted(() => speak([props.title, props.text]))
 </script>
 
 <template>

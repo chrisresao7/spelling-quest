@@ -1,0 +1,63 @@
+name: Voice clips
+
+# Makes the theme voice clips (scripts/make-voice.mjs) whenever a week or theme changes,
+# and commits them. Needs the GOOGLE_TTS_API_KEY repository secret; without it this does
+# nothing and the game uses the browser voice.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/content/weeks/**'
+      - 'public/content/themes/**/theme.json'
+      - 'public/content/themes/index.json'
+      - 'src/lib/voice.js'
+      - 'src/lib/gameLines.js'
+      - 'scripts/make-voice.mjs'
+  workflow_dispatch:
+    inputs:
+      samples:
+        description: Make voice samples to choose from (into voice-samples/) instead of clips
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: voice-${{ github.ref }}
+
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    env:
+      GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check the key is set up
+        id: key
+        run: |
+          if [ -z "$GOOGLE_TTS_API_KEY" ]; then
+            echo "::notice::No GOOGLE_TTS_API_KEY secret yet, so no voice clips were made. The game uses the browser voice."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Make clips
+        if: steps.key.outputs.ok == 'true' && !inputs.samples
+        run: npm run voice
+      - name: Make samples
+        if: steps.key.outputs.ok == 'true' && inputs.samples
+        run: npm run voice -- --samples
+      - name: Commit
+        if: steps.key.outputs.ok == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A public/content/themes
+          if [ -d voice-samples ]; then git add -A voice-samples; fi
+          if git diff --cached --quiet; then echo "Nothing new."; exit 0; fi
+          git commit -m "Update voice clips"
+          git push

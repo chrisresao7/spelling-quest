@@ -16,6 +16,30 @@
       }
     }
   },
+  "voice": {
+    "engine": "google",
+    "narrator": {
+      "name": "en-AU-Neural2-B",
+      "rate": 0.95
+    },
+    "hero": {
+      "name": "en-AU-Neural2-C",
+      "rate": 1.05,
+      "pitch": 3
+    },
+    "sidekick": {
+      "name": "en-AU-Neural2-A",
+      "rate": 1.08,
+      "pitch": 5
+    },
+    "word": {
+      "name": "en-GB-Neural2-A",
+      "rate": 0.8
+    },
+    "browser": {
+      "lang": "en-GB"
+    }
+  },
   "home": {
     "background": "art/bg-beach.svg"
   },
