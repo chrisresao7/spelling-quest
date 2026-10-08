@@ -1,0 +1,133 @@
+/* Base look. A theme's theme.css overrides these variables (and can add its own rules). */
+:root {
+  --sq-bg: #fdf6e3;
+  --sq-surface: #ffffff;
+  --sq-surface-text: #2b2b3a;
+  --sq-text: #2b2b3a;
+  --sq-muted: #6b6b80;
+  --sq-primary: #3f7fd8;
+  --sq-primary-text: #ffffff;
+  --sq-accent: #f2a541;
+  --sq-good: #3aa65a;
+  --sq-bad: #e0534a;
+  /* The colour for the letters that make the sound, like the red letters on the school sheet. */
+  --sq-focus: #d23c3c;
+  --sq-tile: #fff7e8;
+  --sq-tile-edge: #e7c98f;
+  --sq-font: 'Andika', 'Comic Sans MS', system-ui, sans-serif;
+  --sq-radius: 22px;
+  --sq-shadow: 0 6px 0 rgba(0, 0, 0, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--sq-bg);
+  color: var(--sq-text);
+  font-family: var(--sq-font);
+  font-size: 22px;
+  -webkit-font-smoothing: antialiased;
+  /* Tablet: no double-tap zoom, no text selection while tapping fast. */
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+#app {
+  min-height: 100%;
+  min-height: 100dvh;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  min-height: 64px;
+  padding: 0 1.4em;
+  border-radius: 999px;
+  background: var(--sq-primary);
+  color: var(--sq-primary-text);
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: var(--sq-shadow);
+  transition: transform 0.1s;
+}
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.12);
+}
+.btn.secondary {
+  background: var(--sq-surface);
+  color: var(--sq-surface-text);
+}
+.btn.big {
+  min-height: 80px;
+  font-size: 1.4rem;
+  padding: 0 2em;
+}
+
+.panel {
+  background: var(--sq-surface);
+  color: var(--sq-surface-text);
+  border-radius: var(--sq-radius);
+  box-shadow: var(--sq-shadow);
+}
+
+.focus {
+  color: var(--sq-focus);
+}
+
+@keyframes sq-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+.shake {
+  animation: sq-shake 0.4s;
+}
+
+@keyframes sq-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.pop {
+  animation: sq-pop 0.35s ease-out;
+}
+
+@keyframes sq-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 200, 0, 0.9); }
+  50% { box-shadow: 0 0 0 12px rgba(255, 200, 0, 0); }
+}
+.pulse {
+  animation: sq-pulse 1s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
