@@ -1,4 +1,4 @@
-// The shared recordings store: a Cloudflare Pages Function in front of an R2 bucket.
+// The shared recordings store: part of the Cloudflare Worker (worker.js), in front of an R2 bucket.
 // It only answers on the game's own site, which Cloudflare Access already keeps private.
 //
 //   GET    /api/recordings          -> { recordings: { "sound:ae": updated, ... } }
