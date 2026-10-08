@@ -23,14 +23,12 @@
       "rate": 1
     },
     "hero": {
-      "name": "en-AU-Neural2-C",
-      "rate": 1.05,
-      "pitch": 3
+      "name": "en-AU-Chirp3-HD-Leda",
+      "rate": 1.05
     },
     "sidekick": {
-      "name": "en-AU-Neural2-A",
-      "rate": 1.08,
-      "pitch": 5
+      "name": "en-AU-Chirp3-HD-Zephyr",
+      "rate": 1.05
     },
     "word": {
       "name": "en-GB-Neural2-A",

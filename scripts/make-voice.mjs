@@ -38,13 +38,17 @@ async function synthesize(text, voice) {
     })
     if (res.ok) return Buffer.from((await res.json()).audioContent, 'base64')
     const msg = await res.text()
-    // Some voices don't take SSML or a pitch: try again without.
+    // Some voices don't take SSML, a pitch or a speed: try again without.
     if (res.status === 400 && /ssml/i.test(msg) && body.input.ssml) {
       body.input = { text: `${text.toUpperCase()}.` }
       continue
     }
     if (res.status === 400 && /pitch/i.test(msg) && body.audioConfig.pitch !== undefined) {
       delete body.audioConfig.pitch
+      continue
+    }
+    if (res.status === 400 && /rate/i.test(msg) && body.audioConfig.speakingRate !== undefined) {
+      delete body.audioConfig.speakingRate
       continue
     }
     if ((res.status === 429 || res.status >= 500) && attempt < 4) {

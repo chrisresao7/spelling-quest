@@ -47,19 +47,19 @@ Each theme has its own voices. The `voice` block in `theme.json` picks a voice f
 "voice": {
   "engine": "google",
   "narrator": { "name": "en-AU-Chirp3-HD-Schedar", "rate": 1 },
-  "hero": { "name": "en-AU-Neural2-C", "rate": 1.05, "pitch": 3 },
-  "sidekick": { "name": "en-AU-Neural2-A", "rate": 1.08, "pitch": 5 },
+  "hero": { "name": "en-AU-Chirp3-HD-Leda", "rate": 1.05 },
+  "sidekick": { "name": "en-AU-Chirp3-HD-Zephyr", "rate": 1.05 },
   "word": { "name": "en-GB-Neural2-A", "rate": 0.8 },
   "browser": { "lang": "en-GB" }
 }
 ```
 
 - `narrator` reads the story pages and the sticker book. `hero` and `sidekick` say the speech-bubble lines. `word` says the spelling words, slowly. Keep `word` a British voice so words sound the way school says them.
-- `name` is a Google Cloud Text-to-Speech voice. Its first part is the accent (`en-AU` Australian, `en-GB` British). `rate` is speed (1 is normal) and `pitch` is in semitones (0 is normal; some voices ignore it).
+- `name` is a Google Cloud Text-to-Speech voice. Its first part is the accent (`en-AU` Australian, `en-GB` British). `rate` is speed (1 is normal) and `pitch` is in semitones (0 is normal; the newer “Chirp3-HD” voices don't take a pitch, so it's left out for them).
 - `browser` is what the tablet's own voice uses for any line that has no clip yet.
 - Use stock voices only. Never copy a real person's or a TV character's voice.
 
-The clips themselves are made by GitHub (`.github/workflows/voice.yml` runs `npm run voice`) whenever a theme or week changes, and saved in the theme's `voice/` folder. Don't edit that folder by hand. To hear what voices there are, run the **Voice clips** workflow from the Actions tab with "Make voice samples" ticked.
+The clips themselves are made by GitHub (`.github/workflows/voice.yml` runs `npm run voice`) whenever a theme or week changes, and saved in the theme's `voice/` folder. Don't edit that folder by hand. To hear what voices there are, run the **Voice clips** workflow from the Actions tab with "Make voice samples" ticked (or add an empty `voice-samples/WANTED` file in a pull request). The samples land in `voice-samples/`; delete that folder once you have chosen.
 
 Grown-ups can also record the week's sound, and any word, in their own voice from the home screen's **Grown-ups** button. Those recordings are used before any clip.
 
