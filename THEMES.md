@@ -49,7 +49,7 @@ Each theme has its own voices. The `voice` block in `theme.json` picks a voice f
   "narrator": { "name": "en-AU-Chirp3-HD-Schedar", "rate": 1 },
   "hero": { "name": "en-AU-Chirp3-HD-Leda", "rate": 1.05 },
   "sidekick": { "name": "en-AU-Chirp3-HD-Zephyr", "rate": 1.05 },
-  "word": { "name": "en-GB-Neural2-A", "rate": 0.8 },
+  "word": { "name": "en-GB-Neural2-F", "rate": 0.8 },
   "browser": { "lang": "en-GB" }
 }
 ```
