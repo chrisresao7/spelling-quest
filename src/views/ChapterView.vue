@@ -6,7 +6,9 @@ import StoryCard from '../components/StoryCard.vue'
 import SoundSort from '../games/SoundSort.vue'
 import PickPatch from '../games/PickPatch.vue'
 import SpellIt from '../games/SpellIt.vue'
-import { loadWeek } from '../composables/content.js'
+import LookRight from '../games/LookRight.vue'
+import TrickyCatch from '../games/TrickyCatch.vue'
+import { loadDictionary, loadWeek } from '../composables/content.js'
 import { useTheme } from '../composables/useTheme.js'
 import { useProgress } from '../stores/progress.js'
 
@@ -23,7 +25,8 @@ const sticker = ref(null)
 
 watchEffect(async () => {
   try {
-    week.value = await loadWeek(props.weekId)
+    const [w, dict] = await Promise.all([loadWeek(props.weekId), loadDictionary()])
+    week.value = { ...w, isWord: (s) => dict.has(s) }
   } catch (e) {
     error.value = e.message
   }
@@ -32,8 +35,8 @@ watchEffect(async () => {
 // The order of the chapter. A theme only changes how each step looks and what it says.
 const steps = computed(() => {
   if (!week.value) return []
-  const s = ['intro', 'soundSort', 'pickPatch', 'spellIt']
-  if (week.value.tricky.length) s.push('tricky')
+  const s = ['intro', 'soundSort', 'pickPatch', 'lookRight', 'spellIt']
+  if (week.value.tricky.length) s.push('tricky', 'trickyCatch')
   return [...s, 'end']
 })
 const key = computed(() => steps.value[step.value])
@@ -67,7 +70,7 @@ function nextStep() {
       :title="fill(story.endTitle || 'Hooray!')"
       :text="fill(story.ending) || line('chapterEnd')"
       :speakers="['hero', 'sidekick']"
-      :background="asset(story.background)"
+      :background="asset(story.endBackground || story.background)"
       button="Play again"
       @next="step = 0"
     >
@@ -93,6 +96,7 @@ function nextStep() {
       />
       <SoundSort v-else-if="key === 'soundSort'" :week="week" @done="nextStep" />
       <PickPatch v-else-if="key === 'pickPatch'" :week="week" @done="nextStep" />
+      <LookRight v-else-if="key === 'lookRight'" :week="week" @done="nextStep" />
       <SpellIt
         v-else-if="key === 'spellIt'"
         :words="week.words"
@@ -107,6 +111,7 @@ function nextStep() {
         scene-key="tricky"
         @done="nextStep"
       />
+      <TrickyCatch v-else-if="key === 'trickyCatch'" :week="week" @done="nextStep" />
     </template>
   </template>
 </template>

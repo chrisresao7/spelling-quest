@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice">
+  <!-- Original background drawn for Spelling Quest. -->
+  <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fcdf3"/><stop offset="1" stop-color="#d6f1fc"/></linearGradient></defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <g transform="translate(1380 140)"><circle r="100" fill="#fff3b0" opacity="0.5"/><circle r="70" fill="#ffd24a"/></g>
+  <g fill="#fff" opacity="0.9"><ellipse cx="260" cy="150" rx="70" ry="34"/><ellipse cx="315" cy="132" rx="52" ry="40"/><ellipse cx="370" cy="152" rx="62" ry="30"/></g>
+  <rect x="0" y="520" width="1600" height="400" fill="#2e9cca"/>
+  <path d="M0 620 Q400 590 800 615 T1600 600 V1000 H0Z" fill="#f6d89a"/>
+  <rect x="0" y="700" width="1600" height="300" fill="#e9e1d2"/>
+  <g fill="#d8cdb8">
+    <rect x="0" y="700" width="1600" height="14"/>
+    <rect x="100" y="770" width="160" height="10" rx="5"/><rect x="520" y="830" width="200" height="10" rx="5"/><rect x="1000" y="780" width="160" height="10" rx="5"/><rect x="1380" y="860" width="180" height="10" rx="5"/>
+  </g>
+  <g transform="translate(980 360)">
+    <rect x="0" y="120" width="420" height="250" rx="16" fill="#fffaf0"/>
+    <path d="M-20 120 H440 L410 60 H10Z" fill="#ff8fb3"/>
+    <g fill="#fff">
+      <path d="M10 120 h50 v24 a25 25 0 0 1 -50 0Z"/><path d="M110 120 h50 v24 a25 25 0 0 1 -50 0Z"/><path d="M210 120 h50 v24 a25 25 0 0 1 -50 0Z"/><path d="M310 120 h50 v24 a25 25 0 0 1 -50 0Z"/>
+    </g>
+    <g fill="#ff8fb3"><path d="M60 120 h50 v24 a25 25 0 0 1 -50 0Z"/><path d="M160 120 h50 v24 a25 25 0 0 1 -50 0Z"/><path d="M260 120 h50 v24 a25 25 0 0 1 -50 0Z"/><path d="M360 120 h50 v24 a25 25 0 0 1 -50 0Z"/></g>
+    <rect x="40" y="190" width="340" height="90" rx="12" fill="#9ad8f5"/>
+    <rect x="0" y="300" width="420" height="20" fill="#f1e2c4"/>
+    <g transform="translate(210 20)"><path d="M-30 0 L0 80 L30 0Z" fill="#e7bb6a"/><circle cx="0" cy="-12" r="34" fill="#fff6e0"/><circle cx="-14" cy="-36" r="22" fill="#ff8fb3"/><circle cx="16" cy="-34" r="20" fill="#8fd3a8"/></g>
+  </g>
+  <g transform="translate(260 520)"><rect x="-6" y="0" width="12" height="220" fill="#8a6a4a"/><path d="M-120 10 Q0 -90 120 10Z" fill="#2e9cca"/><path d="M-40 -28 Q0 -90 40 -28 L0 10Z" fill="#fff"/></g>
+</svg>

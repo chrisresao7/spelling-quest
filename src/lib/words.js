@@ -85,3 +85,44 @@ export function parseWeek(raw) {
     tips: raw.tips || {},
   }
 }
+
+// Sounds that are often spelt the wrong way round, used to make believable wrong spellings
+// of tricky words that don't follow this week's pattern ("said" -> "sed", "all" -> "orl").
+const SOUND_SWAPS = [
+  ['ai', 'e'],
+  ['ai', 'ay'],
+  ['a', 'o'],
+  ['a', 'or'],
+  ['e', 'ea'],
+  ['ou', 'ow'],
+  ['oo', 'u'],
+  ['y', 'ie'],
+]
+
+/** Believable wrong spellings for any word: sound swaps, a dropped double letter, two letters swapped. */
+export function wrongSpellings(text) {
+  const out = new Set()
+  for (const [from, to] of SOUND_SWAPS) {
+    if (text.includes(from)) out.add(text.replace(from, to))
+  }
+  const doubled = text.match(/(\w)\1/)
+  if (doubled) out.add(text.replace(doubled[0], doubled[1]))
+  for (let i = 1; i < text.length - 1; i++) {
+    if (text[i] !== text[i + 1]) out.add(text.slice(0, i) + text[i + 1] + text[i] + text.slice(i + 2))
+  }
+  out.delete(text)
+  return [...out]
+}
+
+/**
+ * Up to `count` wrong spellings to show beside a word. Ones listed in the week file come first,
+ * then swaps of this week's spellings of the sound, then general look-alikes.
+ *
+ * RULE: a wrong option is never a real word. "sale" is a fine spelling, just not of "sail",
+ * so showing it as wrong would teach the child something untrue. `isWord` checks the dictionary.
+ */
+export function lookalikes(word, graphemes, { extra = [], count = 2, rand = Math.random, isWord = () => false } = {}) {
+  const pick = (list) => [...list].sort(() => rand() - 0.5)
+  const all = [...new Set([...pick(extra), ...pick(misspellings(word, graphemes)), ...pick(wrongSpellings(word.text))])]
+  return all.filter((s) => s !== word.text && !isWord(s)).slice(0, count)
+}

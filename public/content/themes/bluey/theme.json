@@ -1,0 +1,110 @@
+{
+  "name": "Beach Day",
+  "characters": {
+    "hero": {
+      "name": "Bluey",
+      "art": {
+        "happy": "art/pup-blue-happy.svg",
+        "thinking": "art/pup-blue-thinking.svg"
+      }
+    },
+    "sidekick": {
+      "name": "Bingo",
+      "art": {
+        "happy": "art/pup-red-happy.svg",
+        "thinking": "art/pup-red-thinking.svg"
+      }
+    }
+  },
+  "home": {
+    "background": "art/bg-beach.svg"
+  },
+  "lines": {
+    "correct": [
+      "Hooray! {word}!",
+      "Yes! That's {word}!",
+      "You got it! {word}!",
+      "Spelling legend!",
+      "Too easy!"
+    ],
+    "tryAgain": [
+      "Ooh, so close! Have another go.",
+      "Not that one. Listen again!",
+      "Hmm, let's think about it."
+    ],
+    "prompt": [
+      "Which bag does this word go in?"
+    ],
+    "chapterEnd": [
+      "Best. Beach day. Ever!"
+    ]
+  },
+  "story": {
+    "title": "Beach Day",
+    "intro": "It's a hot, sunny day and {hero} and {sidekick} are going to the beach! But first there's lots to do. Can you help?",
+    "background": "art/bg-house.svg",
+    "endTitle": "Best beach day ever!",
+    "ending": "The sun is going down. {hero} and {sidekick} are sandy, tired and happy. Thanks for helping with all those words!",
+    "endBackground": "art/bg-sunset.svg",
+    "scenes": {
+      "soundSort": {
+        "speaker": "hero",
+        "title": "Pack the beach bags",
+        "intro": "We've got four beach bags, one for each way to spell the ay sound. Help me put every word in the right bag!",
+        "prompt": "Which bag does this word go in?",
+        "background": "art/bg-house.svg",
+        "item": "art/item-bag.svg"
+      },
+      "pickPatch": {
+        "speaker": "sidekick",
+        "title": "Sandcastle flags",
+        "intro": "We built a giant sandcastle, but the flags have letters missing! Listen to the word, then pick the missing letters.",
+        "prompt": "Listen, then pick the missing letters!",
+        "background": "art/bg-beach.svg",
+        "item": "art/item-flag.svg"
+      },
+      "lookRight": {
+        "speaker": "hero",
+        "title": "The ice-cream van",
+        "intro": "Time for an ice cream! But the ice-cream man has written his sign three different ways. Listen to the word and find the one that's spelt right.",
+        "prompt": "Which one is spelt right?",
+        "background": "art/bg-kiosk.svg",
+        "item": "art/item-cone.svg"
+      },
+      "spellIt": {
+        "speaker": "sidekick",
+        "title": "Write in the sand",
+        "intro": "Let's write the words in the wet sand before the waves wash them away! Look at the word, then spell it with the letters.",
+        "prompt": "Look at the word and say it. Tap the button when you're ready!",
+        "background": "art/bg-shore.svg",
+        "item": "art/item-wave.svg"
+      },
+      "tricky": {
+        "speaker": "hero",
+        "title": "Tricky rock pool",
+        "intro": "Two tricky words are hiding in the rock pool! They don't follow the rules, so we just have to remember them.",
+        "prompt": "This is a tricky word. Look really carefully!",
+        "background": "art/bg-rockpool.svg",
+        "item": "art/item-shell.svg"
+      },
+      "trickyCatch": {
+        "speaker": "sidekick",
+        "title": "Bubble catch",
+        "intro": "Look, the tricky words are floating up out of the rock pool in bubbles! Listen, then catch the bubble that's spelt right before it floats away.",
+        "prompt": "Listen, then catch the bubble that's spelt right!",
+        "background": "art/bg-rockpool.svg",
+        "item": "art/item-bubble.svg"
+      }
+    }
+  },
+  "rewards": [
+    "art/sticker-shell.svg",
+    "art/sticker-sandcastle.svg",
+    "art/sticker-crab.svg",
+    "art/sticker-boat.svg",
+    "art/sticker-starfish.svg",
+    "art/sticker-lolly.svg",
+    "art/sticker-bucket.svg",
+    "art/sticker-hat.svg"
+  ]
+}

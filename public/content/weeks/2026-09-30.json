@@ -5,6 +5,10 @@
   "graphemes": ["ai", "ay", "a_e", "ea"],
   "words": ["m[a]k[e]", "m[a]d[e]", "s[ai]l", "p[ai]n", "cl[ay]", "p[ay]", "gr[ea]t"],
   "tricky": ["all", "said"],
+  "trickyMistakes": {
+    "said": ["sed", "sayd", "siad"],
+    "all": ["al", "orl", "oll"]
+  },
   "tips": {
     "ea": "'ea' is only in great, steak and break.",
     "ay": "'ay' usually comes at the end of a word.",

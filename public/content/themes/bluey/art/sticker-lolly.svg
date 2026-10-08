@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200">
+  <!-- Original sticker drawn for Spelling Quest. -->
+  <circle r="92" fill="#fff"/><circle r="80" fill="#ffe6f0"/>
+  <path d="M-30 -60 Q-30 -76 0 -76 Q30 -76 30 -60 V30 H-30 Z" fill="#ff8fb3"/><path d="M-30 -10 H30 V30 H-30Z" fill="#ffd24a"/><path d="M-30 -36 H30 V-10 H-30Z" fill="#fff6e0"/><rect x="-7" y="30" width="14" height="40" rx="7" fill="#d9b07a"/>
+</svg>

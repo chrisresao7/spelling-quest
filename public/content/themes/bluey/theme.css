@@ -1,0 +1,32 @@
+/* Beach Day: sunny sky, sand and two heeler pups. Overrides the variables in src/styles.css. */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&display=swap');
+
+:root[data-theme='bluey'] {
+  --sq-bg: #9ad8f5;
+  --sq-surface: #fffdf6;
+  --sq-surface-text: #1f3a5f;
+  --sq-text: #1f3a5f;
+  --sq-muted: #587091;
+  --sq-primary: #2f6cc4;
+  --sq-primary-text: #ffffff;
+  --sq-accent: #ef8146;
+  --sq-good: #2a9d63;
+  --sq-bad: #de4f45;
+  --sq-focus: #d6333a;
+  --sq-tile: #fff1d2;
+  --sq-tile-edge: #e2b35d;
+  --sq-display: 'Fredoka', 'Andika', system-ui, sans-serif;
+  --sq-radius: 26px;
+  --sq-shadow: 0 6px 0 rgba(31, 58, 95, 0.16);
+
+  /* The four beach bags in Sound Sort. */
+  --sq-bucket: #2f6cc4;
+  --sq-bucket-2: #ef8146;
+  --sq-bucket-3: #1f9ea3;
+  --sq-bucket-4: #d9578f;
+}
+
+/* Panels look like sun-bleached beach signs: a thick sandy rim. */
+:root[data-theme='bluey'] .panel {
+  border: 4px solid #f3dfb2;
+}

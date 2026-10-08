@@ -1,0 +1,6 @@
+/* Replace "my-theme" with the theme's folder name. Any variable from src/styles.css can be set here. */
+:root[data-theme='my-theme'] {
+  --sq-bg: #fdf6e3;
+  --sq-primary: #3f7fd8;
+  --sq-accent: #f2a541;
+}
