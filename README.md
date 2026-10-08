@@ -20,7 +20,7 @@ Each theme has its own voices, made once as voice clips by Google Cloud Text-to-
 ## Voices
 
 - **Theme voices** are MP3 clips in each theme's `voice/` folder, one per line the game can say. GitHub makes them (`.github/workflows/voice.yml`, `npm run voice`) whenever a week or theme changes, using the `GOOGLE_TTS_API_KEY` repository secret, and commits them. Only new lines are sent, and the whole game is a few thousand characters, far inside Google's free monthly allowance. Without the secret nothing breaks; the browser voice is used. See THEMES.md for choosing voices.
-- **Your recordings** (Grown-ups → Record your voice) are saved in the browser and, once the shared store below is set up, on Cloudflare too, so every device that opens the game plays them. The game plays them first: your recording, then the theme's clip, then the browser voice. The week's sound is only ever played from your recording, because a computer voice can't be trusted to say a sound on its own.
+- **Your recordings** (Grown-ups → Record your voice) are saved in the browser and, on Cloudflare too (the bucket below), so every device that opens the game plays them. The game plays them first: your recording, then the theme's clip, then the browser voice. The week's sound is only ever played from your recording, because a computer voice can't be trusted to say a sound on its own.
 
 To set up the Google key: in the Google Cloud console create a project, add billing, enable **Cloud Text-to-Speech API**, create an API key restricted to that API, and add a small budget alert. Then in GitHub open **Settings → Secrets and variables → Actions** and add it as `GOOGLE_TTS_API_KEY`.
 
@@ -66,13 +66,12 @@ npm run voice -- --check   # how many voice clips are still to make
 
 ## Deploying privately (free)
 
-Hosting is Cloudflare Pages, with Cloudflare Access in front so only the family can open it.
+The game runs as a Cloudflare Worker (settings in `wrangler.jsonc`), with Cloudflare Access in front so only the family can open it. It serves the built site and one small API for shared recordings (`server/worker.js`).
 
-1. In the Cloudflare dashboard go to **Workers & Pages → Create → Pages → Connect to Git** and pick `spelling-quest`.
-2. Framework preset **Vue** (or none), build command `npm run build`, output directory `dist`. Under environment variables set `NODE_VERSION` to `22`.
-3. Deploy. Every merge to `main` redeploys automatically, including a new week file added in the GitHub web editor.
-4. To make it private, open the Pages project's **Settings → General → Access policy** and enable it (or create a self-hosted application for the site's address in **Zero Trust → Access → Applications**). Add a policy that allows the family's email addresses. Visitors then get a one-time code by email before they can play. Also protect preview deployments if you share those links.
+1. **Recordings bucket first:** in the Cloudflare dashboard go to **R2 → Create bucket** and name it exactly `spelling-quest-recordings` (the free tier is plenty). The Worker won't deploy without it.
+2. **Connect the repo:** **Workers & Pages → Create application → Import a repository**, pick `spelling-quest`. Build command `npm run build`, deploy command `npx wrangler deploy`, and set the build variable `NODE_VERSION` to `22`. Every merge to `main` then redeploys automatically, including a new week file added in the GitHub web editor.
+3. **Make it private:** open the Worker's **Settings → Domains & Routes**, choose **Enable Cloudflare Access** on the `workers.dev` row and on **Preview URLs**, then **Manage Cloudflare Access** and set the policy to allow only the family's email addresses. Visitors get a one-time code by email before they can play. The recordings API is behind the same login.
 
-5. To share recordings between devices, create an R2 bucket in the Cloudflare dashboard (**R2 → Create bucket**, e.g. `spelling-quest-recordings`; the free tier is plenty). In the Pages project open **Settings → Bindings → Add → R2 bucket**, set the variable name to `RECORDINGS` and pick the bucket, then redeploy. The recordings API (`functions/api/recordings`) sits behind the same Access login as the game. Until this is done, recordings stay on the device they were made on.
+Until the bucket exists, recordings stay on the device they were made on.
 
 Search engines are asked not to index the site (`noindex` in `index.html` and `public/_headers`).

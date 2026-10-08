@@ -52,3 +52,18 @@ describe('shared recordings store', () => {
     expect((await handleRecordings(req('GET'), undefined, undefined)).status).toBe(503)
   })
 })
+
+describe('the worker', async () => {
+  const { default: worker } = await import('../server/worker.js')
+  const env = (bucket) => ({ RECORDINGS: bucket, ASSETS: { fetch: () => new Response('site') } })
+
+  it('sends /api/recordings to the store and everything else to the site', async () => {
+    const bucket = fakeBucket()
+    const put = new Request('https://game.example/api/recordings/word%3Asaid', { method: 'PUT', body: new Uint8Array([1]) })
+    expect((await worker.fetch(put, env(bucket))).status).toBe(200)
+    expect([...bucket.items.keys()]).toEqual(['recordings/word:said'])
+    const list = await worker.fetch(new Request('https://game.example/api/recordings'), env(bucket))
+    expect(Object.keys((await list.json()).recordings)).toEqual(['word:said'])
+    expect(await (await worker.fetch(new Request('https://game.example/'), env(bucket))).text()).toBe('site')
+  })
+})
