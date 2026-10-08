@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 import { parseWeek } from '../src/lib/words.js'
-import { clipKey, planClips, spokenLines } from '../src/lib/voice.js'
+import { planClips, spokenLines } from '../src/lib/voice.js'
 import { encodeWav } from '../src/lib/wav.js'
 
 // Plays the first chapter from start to sticker, answering everything right.
@@ -15,7 +15,7 @@ const byGap = Object.fromEntries(week.words.map((w) => [gapOf(w), w]))
 // Stand-in voice clips: every line the generator would make, each a short beep.
 const theme = JSON.parse(readFileSync('public/content/themes/bluey/theme.json', 'utf8'))
 const lines = spokenLines(theme, [week])
-const clipSet = new Set(lines.map((l) => clipKey(l.role, l.text)))
+const clipSet = new Set(lines.map((l) => l.key))
 const beep = Buffer.from(encodeWav(Float32Array.from({ length: 2400 }, (_, i) => 0.3 * Math.sin(i / 4)), 24000))
 
 async function withVoiceClips(page) {

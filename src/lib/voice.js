@@ -38,9 +38,12 @@ function hash(str, seed) {
   return h.toString(16).padStart(8, '0')
 }
 
-/** The clip file name (without .mp3) for a role saying a line. */
-export function clipKey(role, text) {
-  const s = `${role}|${norm(text)}`
+/**
+ * The clip file name (without .mp3) for a role saying a line in a voice. The voice's
+ * settings are part of the name, so choosing a different voice makes new clips.
+ */
+export function clipKey(role, text, voice = {}) {
+  const s = `${role}|${voice.name || ''}|${voice.rate ?? 1}|${voice.pitch ?? 0}|${norm(text)}`
   return `${role}-${hash(s, 0x811c9dc5)}${hash(s, 0x050c5d1f)}`
 }
 
@@ -106,7 +109,9 @@ export function spokenLines(theme, weeks) {
   const out = new Map()
   const add = (role, text) => {
     const t = norm(text)
-    if (t && !t.includes('{')) out.set(clipKey(role, t), { role, text: t })
+    if (!t || t.includes('{')) return
+    const key = clipKey(role, t, roleVoice(theme, role))
+    out.set(key, { role, text: t, key })
   }
   const words = [...new Set(weeks.flatMap((w) => [...w.words, ...w.tricky].map((x) => x.text)))]
   const fill = (t) => (t?.includes('{word}') ? words.map((word) => fillText(theme, t, { word })) : [fillText(theme, t)])

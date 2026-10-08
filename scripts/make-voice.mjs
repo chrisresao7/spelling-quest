@@ -11,7 +11,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { parseWeek } from '../src/lib/words.js'
-import { clipKey, roleVoice, spokenLines } from '../src/lib/voice.js'
+import { roleVoice, spokenLines } from '../src/lib/voice.js'
 
 const CONTENT = 'public/content'
 const KEY = process.env.GOOGLE_TTS_API_KEY
@@ -64,8 +64,8 @@ async function makeTheme(id, weeks) {
   const dir = join(CONTENT, 'themes', id, 'voice')
   mkdirSync(dir, { recursive: true })
   const lines = spokenLines(theme, weeks)
-  const wanted = new Set(lines.map((l) => clipKey(l.role, l.text)))
-  const todo = lines.filter((l) => !existsSync(join(dir, `${clipKey(l.role, l.text)}.mp3`)))
+  const wanted = new Set(lines.map((l) => l.key))
+  const todo = lines.filter((l) => !existsSync(join(dir, `${l.key}.mp3`)))
   const chars = todo.reduce((n, l) => n + l.text.length, 0)
   console.log(`${id}: ${lines.length} lines, ${todo.length} new (${chars} characters)`)
 
@@ -74,7 +74,7 @@ async function makeTheme(id, weeks) {
 
   for (const l of todo) {
     const mp3 = await synthesize(l.text, roleVoice(theme, l.role))
-    writeFileSync(join(dir, `${clipKey(l.role, l.text)}.mp3`), mp3)
+    writeFileSync(join(dir, `${l.key}.mp3`), mp3)
     process.stdout.write('.')
   }
   process.stdout.write('\n')

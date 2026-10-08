@@ -17,6 +17,12 @@ describe('clipKey', () => {
     expect(clipKey('hero', 'Too easy!')).not.toBe(clipKey('hero', 'Too easy?'))
     expect(clipKey('word', 'said')).toMatch(/^word-[0-9a-f]{16}$/)
   })
+  it('changes when the voice changes, so a new voice gets new clips', () => {
+    const a = { name: 'en-AU-Neural2-B', rate: 0.95 }
+    expect(clipKey('narrator', 'Hi!', a)).toBe(clipKey('narrator', 'Hi!', { ...a }))
+    expect(clipKey('narrator', 'Hi!', a)).not.toBe(clipKey('narrator', 'Hi!', { ...a, name: 'en-AU-Neural2-D' }))
+    expect(clipKey('narrator', 'Hi!', a)).not.toBe(clipKey('narrator', 'Hi!', { ...a, rate: 1 }))
+  })
 })
 
 describe('planClips', () => {

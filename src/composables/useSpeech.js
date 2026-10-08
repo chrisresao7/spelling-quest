@@ -56,7 +56,7 @@ function decode(id, getData) {
 }
 
 const clipBuffer = (role, text) => {
-  const url = `${theme.root}voice/${clipKey(role, text)}.mp3`
+  const url = `${theme.root}voice/${clipKey(role, text, roleVoice(theme, role))}.mp3`
   return decode(url, () => fetch(url).then((r) => (r.ok ? r.arrayBuffer() : Promise.reject())))
 }
 const recordingBuffer = (key, blob) => decode(`${key}@${blob.size}`, () => blob.arrayBuffer())
@@ -138,7 +138,7 @@ async function sayOne(text, role, gen) {
     if (buf) return playBuffers([buf], gen)
   }
   if (audible && theme && clips.size) {
-    const plan = planClips(text, (t) => clips.has(clipKey(role, t)))
+    const plan = planClips(text, (t) => clips.has(clipKey(role, t, roleVoice(theme, role))))
     if (plan) {
       const list = await Promise.all(plan.map((t) => clipBuffer(role, t)))
       if (list.every(Boolean)) return playBuffers(list, gen)

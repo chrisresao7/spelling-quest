@@ -13,6 +13,10 @@ on:
       - 'src/lib/voice.js'
       - 'src/lib/gameLines.js'
       - 'scripts/make-voice.mjs'
+  # On a pull request, adding an empty voice-samples/WANTED file asks for voice samples.
+  pull_request:
+    paths:
+      - 'voice-samples/WANTED'
   workflow_dispatch:
     inputs:
       samples:
@@ -28,11 +32,15 @@ concurrency:
 
 jobs:
   voice:
+    # Pull requests from forks don't get the key.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     env:
       GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -46,11 +54,13 @@ jobs:
             echo "ok=true" >> "$GITHUB_OUTPUT"
           fi
       - name: Make clips
-        if: steps.key.outputs.ok == 'true' && !inputs.samples
+        if: steps.key.outputs.ok == 'true' && !inputs.samples && github.event_name != 'pull_request'
         run: npm run voice
       - name: Make samples
-        if: steps.key.outputs.ok == 'true' && inputs.samples
-        run: npm run voice -- --samples
+        if: steps.key.outputs.ok == 'true' && (inputs.samples || github.event_name == 'pull_request')
+        run: |
+          npm run voice -- --samples
+          rm -f voice-samples/WANTED
       - name: Commit
         if: steps.key.outputs.ok == 'true'
         run: |
