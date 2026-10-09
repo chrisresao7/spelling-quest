@@ -6,6 +6,8 @@ import { parseWeek, wrongSpellings, misspellings } from '../src/lib/words.js'
 import rawWeek from '../public/content/weeks/2026-09-30.json'
 
 const week = parseWeek(rawWeek)
+const weekIds = JSON.parse(readFileSync('public/content/weeks/index.json', 'utf8')).weeks
+const weeks = weekIds.map((id) => parseWeek(JSON.parse(readFileSync(`public/content/weeks/${id}.json`, 'utf8'))))
 const themeFile = (id) => JSON.parse(readFileSync(`public/content/themes/${id}/theme.json`, 'utf8'))
 
 describe('clipKey', () => {
@@ -67,7 +69,7 @@ describe('roleVoice', () => {
 
 // Everything a game can put in a speech bubble or on a story page, built the same way the
 // games build it. Each one must be covered by the clips the generator makes.
-function everythingSaid(theme) {
+function everythingSaid(theme, week) {
   const fill = (t, vars) => fillText(theme, t, vars)
   const scenes = theme.story.scenes
   const words = [...week.words, ...week.tricky].map((w) => w.text)
@@ -89,8 +91,8 @@ function everythingSaid(theme) {
     for (const t of theme.lines.prompt || []) say(fill(t))
     for (const tip of Object.values(week.tips)) say(tip)
     for (const k of ['soundSortPrompt', 'pickPatchPrompt', 'lookRightPrompt', 'spellItLook', 'spellItBuild', 'catchPrompt']) say(GAME_LINES[k])
-    for (const w of week.tricky) {
-      const wrong = [...(week.trickyMistakes?.[w.text] || []), ...wrongSpellings(w.text)]
+    for (const w of key === 'wordCatch' ? week.words : week.tricky) {
+      const wrong = [...(week.mistakes[w.text] || []), ...wrongSpellings(w.text)]
       for (const b of wrong) say(GAME_LINES.catchOops.replace('{letters}', spellOut(b)))
       say(GAME_LINES.catchAway.replace('{letters}', spellOut(w.text)))
     }
@@ -102,11 +104,11 @@ function everythingSaid(theme) {
 
 describe.each(['bluey', '_template'])('voice clips for the %s theme', (id) => {
   const theme = themeFile(id)
-  const lines = spokenLines(theme, [week])
+  const lines = spokenLines(theme, weeks)
   const has = (role) => (t) => lines.some((l) => l.role === role && l.text === t)
 
-  it('cover every line the game can say', () => {
-    const missing = everythingSaid(theme).filter(([role, text]) => text && !planClips(text, has(role)))
+  it('cover every line the game can say, in every week', () => {
+    const missing = weeks.flatMap((w) => everythingSaid(theme, w)).filter(([role, text]) => text && !planClips(text, has(role)))
     expect(missing).toEqual([])
   })
 

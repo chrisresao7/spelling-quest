@@ -82,6 +82,9 @@ export function parseWeek(raw) {
     ...raw,
     words,
     tricky: (raw.tricky || []).map(parseWord),
+    // Wrong spellings to show for a word, from the week file. Older weeks only list them
+    // for tricky words, as `trickyMistakes`.
+    mistakes: { ...raw.trickyMistakes, ...raw.mistakes },
     tips: raw.tips || {},
   }
 }

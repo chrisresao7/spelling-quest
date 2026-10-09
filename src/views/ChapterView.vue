@@ -34,9 +34,11 @@ watchEffect(async () => {
 })
 
 // The order of the chapter. A theme only changes how each step looks and what it says.
+// A week with no sound to practise (like the numbers) skips the games about the sound
+// and catches its words in bubbles instead.
 const steps = computed(() => {
   if (!week.value) return []
-  const s = ['intro', 'soundSort', 'pickPatch', 'lookRight', 'spellIt']
+  const s = week.value.sound ? ['intro', 'soundSort', 'pickPatch', 'lookRight', 'spellIt'] : ['intro', 'lookRight', 'spellIt', 'wordCatch']
   if (week.value.tricky.length) s.push('tricky', 'trickyCatch')
   return [...s, 'end']
 })
@@ -113,6 +115,14 @@ function nextStep() {
         @done="nextStep"
       />
       <TrickyCatch v-else-if="key === 'trickyCatch'" :week="week" @done="nextStep" />
+      <TrickyCatch
+        v-else-if="key === 'wordCatch'"
+        :week="week"
+        :words="week.words"
+        :repeats="1"
+        scene-key="wordCatch"
+        @done="nextStep"
+      />
     </template>
   </template>
 </template>

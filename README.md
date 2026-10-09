@@ -50,6 +50,8 @@ Add a file to `public/content/weeks/`, named after the Monday of that week, and 
 
 Square brackets mark the letters that make the sound (the red letters on the school sheet). A split spelling like a‑e gets two pairs of brackets: `m[a]k[e]`, and its grapheme is written `a_e`. Every word's spelling must be in `graphemes`, or the chapter won't load. `trickyMistakes` is optional: it lists wrong spellings to use in Tricky Word Catch, and the game makes its own up if it's left out.
 
+Some weeks have no sound to practise, like the numbers week (`2026-10-07.json`). Leave out `sound`, write the words without brackets (a review word can keep its brackets, with its spelling in `graphemes`), and list two wrong spellings for each word in `mistakes`, because there are no other spellings of a sound to swap in. That chapter skips Sound Sort and Pick the Patch and ends with a bubble catch of the week's words. `tips` can be keyed by a word as well as by a spelling (`"two": "'two' has a silent 'w'..."`). Wrong spellings that turn out to be real words are still dropped.
+
 ## Themes
 
 A theme is a folder in `public/content/themes/` with a `theme.json` (characters, what they say, the story), a `theme.css` (colours and fonts) and an `art/` folder. See [THEMES.md](THEMES.md).

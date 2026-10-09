@@ -24,7 +24,9 @@ onMounted(async () => {
 onBeforeUnmount(() => recorder?.state === 'recording' && recorder.stop())
 
 const rows = (w) => [
-  { key: `sound:${w.sound}`, role: 'sound', say: w.sound, label: `/${w.sound}/ sound`, hint: `as in ${w.graphemes.map(graphemeLabel).join(', ')}` },
+  ...(w.sound
+    ? [{ key: `sound:${w.sound}`, role: 'sound', say: w.sound, label: `/${w.sound}/ sound`, hint: `as in ${w.graphemes.map(graphemeLabel).join(', ')}` }]
+    : []),
   ...[...w.words, ...w.tricky].map((x) => ({ key: `word:${x.text}`, role: 'word', say: x.text, label: x.text })),
 ]
 

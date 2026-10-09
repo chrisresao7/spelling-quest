@@ -49,6 +49,22 @@ describe('week 1 file', () => {
   })
 })
 
+describe('numbers week file', () => {
+  const raw = JSON.parse(readFileSync('public/content/weeks/2026-10-07.json', 'utf8'))
+
+  it('has no sound, keeps make as a review word, and lists mistakes for every word', () => {
+    const w = parseWeek(raw)
+    expect(w.sound).toBeUndefined()
+    expect(w.words.map((x) => x.text)).toEqual(['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'make'])
+    expect(w.words.at(-1).pattern).toBe('a_e')
+    for (const x of w.words) expect(w.mistakes[x.text]?.length, x.text).toBeGreaterThanOrEqual(2)
+  })
+
+  it('still reads trickyMistakes from older week files', () => {
+    expect(parseWeek(week).mistakes.said).toEqual(['sed', 'sayd', 'siad'])
+  })
+})
+
 describe('wrongSpellings', () => {
   it('makes believable mistakes for tricky words', () => {
     expect(wrongSpellings('said')).toContain('sed')
@@ -103,17 +119,24 @@ describe('with the real dictionary', () => {
     for (const w of ['sale', 'pane', 'maid', 'grate', 'pea', 'seal']) expect(isWord(w)).toBe(true)
   })
 
-  it('gives every word this week two wrong spellings that are not real words', () => {
-    const parsed = parseWeek(week)
+  // Every week in the game, as the games ask for them: Which Looks Right? and the word catch
+  // use a word's own sound swaps and the week file's `mistakes`; Tricky Word Catch the same.
+  const weekIds = JSON.parse(readFileSync('public/content/weeks/index.json', 'utf8')).weeks
+  it.each(weekIds)('gives every word in week %s two wrong spellings that are not real words', (id) => {
+    const parsed = parseWeek(JSON.parse(readFileSync(`public/content/weeks/${id}.json`, 'utf8')))
     for (const w of parsed.words) {
-      const options = lookalikes(w, parsed.graphemes, { isWord })
-      expect(options).toHaveLength(2)
-      for (const o of options) expect(isWord(o)).toBe(false)
+      const options = lookalikes(w, parsed.graphemes, { extra: parsed.mistakes[w.text], isWord })
+      expect(options, w.text).toHaveLength(2)
+      for (const o of options) expect(isWord(o), o).toBe(false)
     }
     for (const w of parsed.tricky) {
-      const options = lookalikes(w, [], { extra: week.trickyMistakes[w.text], isWord })
-      expect(options).toHaveLength(2)
-      for (const o of options) expect(isWord(o)).toBe(false)
+      const options = lookalikes(w, [], { extra: parsed.mistakes[w.text], isWord })
+      expect(options, w.text).toHaveLength(2)
+      for (const o of options) expect(isWord(o), o).toBe(false)
     }
+  })
+
+  it('drops a real word even when the week file lists it as a mistake', () => {
+    expect(lookalikes(parseWord('one'), [], { extra: ['won', 'wun'], count: 5, isWord })).not.toContain('won')
   })
 })

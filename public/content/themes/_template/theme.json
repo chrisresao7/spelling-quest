@@ -101,6 +101,13 @@
         "intro": "Catch the tricky word.",
         "prompt": "Listen, then catch the bubble that's spelt right!",
         "background": "art/bg-home.svg"
+      },
+      "wordCatch": {
+        "speaker": "sidekick",
+        "title": "Scene 7",
+        "intro": "Catch this week's words.",
+        "prompt": "Listen, then catch the bubble that's spelt right!",
+        "background": "art/bg-home.svg"
       }
     }
   },

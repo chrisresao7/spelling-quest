@@ -14,7 +14,8 @@ const byGap = Object.fromEntries(week.words.map((w) => [gapOf(w), w]))
 
 // Stand-in voice clips: every line the generator would make, each a short beep.
 const theme = JSON.parse(readFileSync('public/content/themes/bluey/theme.json', 'utf8'))
-const lines = spokenLines(theme, [week])
+const numbers = parseWeek(JSON.parse(readFileSync('public/content/weeks/2026-10-07.json', 'utf8')))
+const lines = spokenLines(theme, [week, numbers])
 const clipSet = new Set(lines.map((l) => l.key))
 const beep = Buffer.from(encodeWav(Float32Array.from({ length: 2400 }, (_, i) => 0.3 * Math.sin(i / 4)), 24000))
 
@@ -156,5 +157,48 @@ test('a whole chapter can be played on a tablet', async ({ page }, testInfo) => 
   expect(spoken.filter(({ role, text }) => !planClips(text, has(role)))).toEqual([])
   expect(played.length).toBeGreaterThan(20)
   expect(played.every((f) => clipSet.has(f.replace('.mp3', '')))).toBe(true)
+  expect(await page.evaluate(() => window.__sqBrowserVoice)).toEqual([])
+})
+
+// A week with no sound (the numbers): Which Looks Right?, Spell It, then a bubble catch of the words.
+test('a week with no sound skips the sound games', async ({ page }) => {
+  const played = await withVoiceClips(page)
+  const words = new Set(numbers.words.map((w) => w.text))
+  await page.goto('/')
+  await page.getByRole('link', { name: /Numbers to ten/ }).click()
+  await page.getByRole('button', { name: 'Start!' }).click()
+
+  // Which Looks Right? straight away, with the week file's wrong spellings.
+  await expect(page.getByRole('heading', { name: 'The ice-cream van' })).toBeVisible()
+  await page.getByRole('button', { name: 'Let’s go!' }).click()
+  for (let i = 0; i < numbers.words.length; i++) {
+    const signs = page.locator('.sign')
+    await expect(signs).toHaveCount(3)
+    const texts = (await signs.allInnerTexts()).map((t) => t.trim())
+    const right = texts.find((t) => words.has(t))
+    for (const t of texts) if (t !== right) expect(numbers.mistakes[right]).toContain(t)
+    await signs.filter({ hasText: new RegExp(`^\\s*${right}\\s*$`) }).click()
+    await expect(page.locator('.sign.right')).toHaveCount(0, { timeout: 5000 })
+  }
+
+  await expect(page.getByRole('heading', { name: 'Write in the sand' })).toBeVisible()
+  await page.getByRole('button', { name: 'Let’s go!' }).click()
+  await spellRound(page, numbers.words.length)
+
+  await expect(page.getByRole('heading', { name: 'Bubble catch' })).toBeVisible()
+  await page.getByRole('button', { name: 'Let’s go!' }).click()
+  for (let i = 0; i < numbers.words.length; i++) {
+    const bubbles = page.locator('.pool .bubble:not(.caught)')
+    await expect(bubbles).toHaveCount(3)
+    const texts = (await bubbles.allInnerTexts()).map((t) => t.trim())
+    await bubbles.nth(texts.findIndex((t) => words.has(t))).dispatchEvent('click')
+    await expect(page.locator('.pool .bubble.caught')).toHaveCount(0, { timeout: 5000 })
+  }
+
+  await expect(page.getByText('You won a sticker!')).toBeVisible()
+  const spoken = await page.evaluate(() => window.__sqSpoken)
+  const has = (role) => (t) => lines.some((l) => l.role === role && l.text === t)
+  expect(spoken.filter(({ role, text }) => !planClips(text, has(role)))).toEqual([])
+  expect(played.length).toBeGreaterThan(20)
   expect(await page.evaluate(() => window.__sqBrowserVoice)).toEqual([])
 })
