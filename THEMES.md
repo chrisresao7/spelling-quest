@@ -74,3 +74,12 @@ Set any of the `--sq-*` variables from `src/styles.css` under `:root[data-theme=
 - Backgrounds: wide, about 1600×1000, with the interesting part in the top half and plain ground at the bottom where the character and buttons go. Add `preserveAspectRatio="xMidYMax slice"` to SVG backgrounds.
 - Stickers: square, round sticker shape.
 - Only use art you made or have the right to use. The Beach Day pups are original drawings, not pictures of any TV characters.
+
+### Making art with Leonardo.ai
+
+Each theme can have an `art-prompts.json` that describes every picture: a shared `style`, a prompt for each `kind` (character, background, sticker) and a prompt for each picture. The **Theme art** workflow sends them to Leonardo.ai and commits the results into `art-samples/<theme>/`, two of each, to choose from. It needs the `LEONARDO_API_KEY` repository secret (an API key, which Leonardo sells separately from its website plans).
+
+- To ask for pictures in a pull request, add a file `art-samples/WANTED` holding the theme and, if you want only some, the picture names: `bluey bg-house pup-blue-happy`. Or run the workflow from the Actions tab.
+- Without an API key, paste the style, kind and picture prompts together into the Leonardo website instead.
+- Chosen pictures are copied into the theme's `art/` folder and named in `theme.json`. Delete `art-samples/` once you've chosen.
+- Describe the look in words. Never name a TV show or its characters in a prompt, so the pictures stay original.

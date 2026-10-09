@@ -1,51 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
-  <!-- Original pup drawn for Spelling Quest: soft storybook style, no outlines, a faint grain. -->
-  <defs>
-    <filter id="grain" x="0" y="0" width="100%" height="100%">
-      <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" seed="7" result="n"/>
-      <feColorMatrix in="n" type="saturate" values="0" result="g"/>
-      <feComponentTransfer in="g" result="g2"><feFuncR type="linear" slope="0.22" intercept="0.84"/><feFuncG type="linear" slope="0.22" intercept="0.84"/><feFuncB type="linear" slope="0.22" intercept="0.84"/><feFuncA type="linear" slope="0" intercept="1"/></feComponentTransfer>
-      <feBlend in="SourceGraphic" in2="g2" mode="multiply" result="b"/>
-      <feComposite in="b" in2="SourceGraphic" operator="in"/>
-    </filter>
-    <radialGradient id="light" cx="0.4" cy="0.25" r="0.75"><stop offset="0" stop-color="#fff" stop-opacity="0.12"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-  </defs>
-  <ellipse cx="152" cy="289" rx="62" ry="7" fill="#1d2433" opacity="0.13"/>
-  <g filter="url(#grain)">
-    <!-- tail -->
-    <path d="M122 228 Q90 222 80 190" stroke="#6c9fe0" stroke-width="13" stroke-linecap="round" fill="none"/>
-    <circle cx="79" cy="187" r="7.5" fill="#f6e3bd"/>
-    <!-- far leg and arm, a shade darker -->
-    <path d="M134 242 L133 282" stroke="#5584c6" stroke-width="14" stroke-linecap="round"/>
-    <ellipse cx="138" cy="286" rx="13" ry="6" fill="#e6cfa3"/>
-    <path d="M130 170 Q116 190 112 212" stroke="#5584c6" stroke-width="12" stroke-linecap="round" fill="none"/>
-    <circle cx="112" cy="214" r="7" fill="#e6cfa3"/>
-    <!-- body -->
-    <path d="M126 150 C110 172 109 222 119 244 C131 257 168 257 179 244 C187 222 183 172 169 150 Z" fill="#6c9fe0"/>
-    <path d="M124 162 C115 182 113 210 119 230 C128 214 136 190 141 160 Z" fill="#3f5f9e"/>
-    <path d="M158 162 C176 182 178 228 171 244 C162 251 151 249 148 241 C153 212 153 182 158 162 Z" fill="#f6e3bd"/>
-    <!-- near leg -->
-    <path d="M164 244 L165 282" stroke="#6c9fe0" stroke-width="14" stroke-linecap="round"/>
-    <ellipse cx="170" cy="286" rx="13" ry="6" fill="#f6e3bd"/>
-    <!-- head -->
-    <path d="M108 72 C98 46 96 22 103 7 C120 18 136 40 143 60 Z" fill="#3f5f9e"/>
-    <path d="M100 70 C120 52 178 52 197 72 C208 92 206 130 191 146 C171 159 118 159 100 145 C85 129 85 88 100 70 Z" fill="#6c9fe0"/>
-    <path d="M182 84 C210 84 236 90 247 101 C256 113 252 132 237 139 C215 145 196 145 180 139 Z" fill="#6c9fe0"/>
-    <path d="M182 121 C206 125 232 127 252 120 C250 135 239 142 222 143 C204 144 190 142 180 137 Z" fill="#f6e3bd"/>
-    <path d="M150 58 C156 35 168 15 183 6 C190 25 187 52 179 73 Z" fill="#6c9fe0"/>
-    <path d="M158 55 C163 39 171 25 178 18 C182 32 181 48 175 62 Z" fill="#f4c5a9"/>
-    <path d="M108 66 C128 54 168 53 188 64 C180 77 164 82 150 82 C134 82 118 77 108 66 Z" fill="#3f5f9e"/>
-    <path d="M100 70 C120 52 178 52 197 72 C208 92 206 130 191 146 C171 159 118 159 100 145 C85 129 85 88 100 70 Z" fill="url(#light)"/>
-    <ellipse cx="186" cy="78" rx="9" ry="5.5" fill="#f6e3bd"/>
-    <ellipse cx="247" cy="104" rx="12" ry="10" fill="#1d2433"/>
-    <ellipse cx="243" cy="100" rx="4" ry="2.4" fill="#fff" opacity="0.7"/>
-    <ellipse cx="206" cy="126" rx="9" ry="5" fill="#ff8fa3" opacity="0.4"/>
-    <ellipse cx="192" cy="96" rx="8" ry="10" fill="#1d2433"/>
-    <circle cx="194.5" cy="91.5" r="2.6" fill="#fff"/>
-    <path d="M200 133 Q222 155 245 129 Q222 141 200 133 Z" fill="#6b2230"/>
-    <ellipse cx="224" cy="143" rx="6.5" ry="3.5" fill="#f2849a"/>
-    <!-- near arm, waving -->
-    <path d="M167 170 Q204 164 236 160" stroke="#6c9fe0" stroke-width="12" stroke-linecap="round" fill="none"/>
-    <circle cx="240" cy="159" r="8" fill="#f6e3bd"/>
+  <!-- Original pup drawn for Spelling Quest. -->
+  <ellipse cx="150" cy="288" rx="92" ry="9" fill="#000" opacity="0.12"/>
+  <path d="M206 246 Q250 236 252 190" stroke="#5b8fd9" stroke-width="20" stroke-linecap="round" fill="none"/>
+  <circle cx="252" cy="186" r="11" fill="#2d4c8c"/>
+  <ellipse cx="150" cy="218" rx="64" ry="62" fill="#5b8fd9"/>
+  <ellipse cx="150" cy="234" rx="38" ry="44" fill="#f3dfb2"/>
+  <ellipse cx="110" cy="274" rx="30" ry="15" fill="#f3dfb2" stroke="#2d4c8c" stroke-width="3"/>
+  <ellipse cx="190" cy="274" rx="30" ry="15" fill="#f3dfb2" stroke="#2d4c8c" stroke-width="3"/>
+  <path d="M104 196 Q80 170 66 140" stroke="#5b8fd9" stroke-width="28" stroke-linecap="round" fill="none"/>
+       <circle cx="64" cy="134" r="17" fill="#f3dfb2"/>
+       <path d="M196 196 Q220 170 234 140" stroke="#5b8fd9" stroke-width="28" stroke-linecap="round" fill="none"/>
+       <circle cx="236" cy="134" r="17" fill="#f3dfb2"/>
+  <g>
+    <path d="M84 84 L76 8 L142 50 Z" fill="#5b8fd9" stroke="#5b8fd9" stroke-width="14" stroke-linejoin="round"/>
+    <path d="M94 68 L88 28 L126 54 Z" fill="#f7c9a8" stroke="#f7c9a8" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M216 84 L224 8 L158 50 Z" fill="#5b8fd9" stroke="#5b8fd9" stroke-width="14" stroke-linejoin="round"/>
+    <path d="M206 68 L212 28 L174 52 Z" fill="#f7c9a8" stroke="#f7c9a8" stroke-width="6" stroke-linejoin="round"/>
+    <ellipse cx="150" cy="106" rx="82" ry="66" fill="#5b8fd9"/>
+    <path d="M118 44 Q150 30 182 44 Q172 70 150 74 Q128 70 118 44Z" fill="#2d4c8c"/>
+         <ellipse cx="118" cy="104" rx="22" ry="24" fill="#2d4c8c" opacity="0.55"/>
+         <ellipse cx="182" cy="104" rx="22" ry="24" fill="#2d4c8c" opacity="0.55"/>
+    <ellipse cx="150" cy="142" rx="54" ry="36" fill="#f3dfb2"/>
+    <ellipse cx="92" cy="130" rx="13" ry="8" fill="#ff8fa3" opacity="0.45"/>
+    <ellipse cx="208" cy="130" rx="13" ry="8" fill="#ff8fa3" opacity="0.45"/>
+    <path d="M108 106 Q120 92 132 106" stroke="#1d2433" stroke-width="7" stroke-linecap="round" fill="none"/>
+       <path d="M168 106 Q180 92 192 106" stroke="#1d2433" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M130 122 Q150 110 170 122 Q168 138 150 140 Q132 138 130 122Z" fill="#1d2433"/>
+    <ellipse cx="142" cy="120" rx="6" ry="3" fill="#fff" opacity="0.8"/>
+    <path d="M126 146 Q150 176 174 146 Z" fill="#6b2230" stroke="#1d2433" stroke-width="4" stroke-linejoin="round"/>
+       <ellipse cx="150" cy="161" rx="10" ry="7" fill="#f2849a"/>
   </g>
+  
+  
 </svg>

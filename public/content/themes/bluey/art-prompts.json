@@ -1,0 +1,102 @@
+{
+  "model": "de7d3faf-762f-48e0-b3b7-9d0ac3a3fcf3",
+  "style": "Soft storybook children's TV animation style, flat 2D look, simple rounded shapes, no outlines, shapes defined by colour fills only, warm saturated pastels, sunny yellows, soft blues and gentle oranges, faint paper grain texture, bright airy Australian summer light, clean and minimal, camera at a child's eye level",
+  "negative": "text, letters, words, logo, watermark, signature, photo, realistic, 3d render, black outlines, thick linework, scary, extra limbs, extra fingers, people, humans",
+  "kinds": {
+    "character": {
+      "width": 1024,
+      "height": 1024,
+      "prompt": "Full-body original cartoon puppy character standing upright on two legs like a small child, big rounded head, long rounded snout, tall pointed ears, small dark oval eyes, thin arms and legs, short body, facing right in three-quarter view, feet on the bottom edge, centred, plain flat white background, nothing else in the picture",
+      "transparent": true
+    },
+    "background": {
+      "width": 1536,
+      "height": 960,
+      "prompt": "Wide establishing background painting, painterly with soft watercolour-like edges and slight texture, no characters, no people, no animals, interesting detail in the top half, plain open ground across the bottom third, subtle gradient wash in the sky"
+    },
+    "sticker": {
+      "width": 768,
+      "height": 768,
+      "prompt": "Round sticker, a single simple object centred on a pale circular sticker with a thick white border, flat colours, no outlines, plain white background outside the sticker",
+      "transparent": true
+    }
+  },
+  "pictures": {
+    "pup-blue-happy": {
+      "kind": "character",
+      "seed": 41,
+      "prompt": "Older sister puppy, mid-blue fur with a darker navy patch on the crown and back, cream muzzle, cream belly, cream paws, a cream spot above each eye and a cream tail tip. Very happy, big open smile, one arm waving."
+    },
+    "pup-blue-thinking": {
+      "kind": "character",
+      "seed": 41,
+      "prompt": "Older sister puppy, mid-blue fur with a darker navy patch on the crown and back, cream muzzle, cream belly, cream paws, a cream spot above each eye and a cream tail tip. Thinking, looking up, small puzzled mouth, one hand on chin."
+    },
+    "pup-red-happy": {
+      "kind": "character",
+      "seed": 42,
+      "prompt": "Younger, smaller sister puppy, warm orange-red fur with a darker rust patch on the crown and back, cream muzzle, cream belly, cream paws, a cream stripe between the eyes and a cream tail tip. Very happy, big open smile, both arms up cheering."
+    },
+    "pup-red-thinking": {
+      "kind": "character",
+      "seed": 42,
+      "prompt": "Younger, smaller sister puppy, warm orange-red fur with a darker rust patch on the crown and back, cream muzzle, cream belly, cream paws, a cream stripe between the eyes and a cream tail tip. Thinking, head tilted, small puzzled mouth, finger on cheek."
+    },
+    "bg-house": {
+      "kind": "background",
+      "prompt": "A sunny Brisbane backyard: a raised timber Queenslander house on stumps with a wide white veranda, lattice underneath and a red corrugated iron roof, wooden front stairs, a big shady tree, a timber paling fence, a mown green lawn across the bottom."
+    },
+    "bg-beach": {
+      "kind": "background",
+      "prompt": "A sunny Queensland beach: calm turquoise sea, gentle waves, a small sandcastle with a flag, a striped beach umbrella, a few shells, wide flat golden sand across the bottom."
+    },
+    "bg-kiosk": {
+      "kind": "background",
+      "prompt": "A small seaside ice-cream kiosk with a striped awning and a big ice-cream cone sign on a beachfront footpath, palm trees, the sea behind, a wide paved promenade across the bottom."
+    },
+    "bg-shore": {
+      "kind": "background",
+      "prompt": "The water's edge on a sunny beach: soft white foam, gentle waves rolling in, wet shiny sand with footprints, a few shells, wide smooth sand across the bottom."
+    },
+    "bg-rockpool": {
+      "kind": "background",
+      "prompt": "Rock pools at the end of a sunny beach: smooth rounded grey rocks, a clear blue rock pool with a starfish and a little crab, the sea behind, flat sand and rock across the bottom."
+    },
+    "bg-sunset": {
+      "kind": "background",
+      "prompt": "A beach at sunset: a big soft orange sun low over a calm sea, pink and peach sky, long golden reflections on the water, smooth sand across the bottom."
+    },
+    "sticker-shell": {
+      "kind": "sticker",
+      "prompt": "A pink scallop seashell."
+    },
+    "sticker-sandcastle": {
+      "kind": "sticker",
+      "prompt": "A little sandcastle with a blue flag."
+    },
+    "sticker-crab": {
+      "kind": "sticker",
+      "prompt": "A smiling little red crab."
+    },
+    "sticker-boat": {
+      "kind": "sticker",
+      "prompt": "A small sailing boat on a wave."
+    },
+    "sticker-starfish": {
+      "kind": "sticker",
+      "prompt": "A smiling orange starfish."
+    },
+    "sticker-lolly": {
+      "kind": "sticker",
+      "prompt": "A pink, cream and yellow ice lolly on a stick."
+    },
+    "sticker-bucket": {
+      "kind": "sticker",
+      "prompt": "A blue beach bucket with a yellow star."
+    },
+    "sticker-hat": {
+      "kind": "sticker",
+      "prompt": "A yellow sun hat with a pink band."
+    }
+  }
+}

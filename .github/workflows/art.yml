@@ -1,0 +1,73 @@
+name: Theme art
+
+# Makes candidate theme pictures with Leonardo.ai (scripts/make-art.mjs) and commits them
+# into art-samples/ to choose from. Needs the LEONARDO_API_KEY repository secret; without
+# it this does nothing.
+#
+# On a pull request, add an art-samples/WANTED file: its first word is the theme, and any
+# more words are the pictures to make (all of them if there are none), e.g.
+#   bluey bg-house pup-blue-happy
+on:
+  pull_request:
+    paths:
+      - 'art-samples/WANTED'
+  workflow_dispatch:
+    inputs:
+      theme:
+        description: Theme folder
+        default: bluey
+      pictures:
+        description: Pictures to make, separated by spaces (blank for all)
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: art-${{ github.ref }}
+
+jobs:
+  art:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    env:
+      LEONARDO_API_KEY: ${{ secrets.LEONARDO_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check the key is set up
+        id: key
+        run: |
+          if [ -z "$LEONARDO_API_KEY" ]; then
+            echo "::notice::No LEONARDO_API_KEY secret yet, so no pictures were made."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Make pictures
+        if: steps.key.outputs.ok == 'true'
+        env:
+          THEME: ${{ inputs.theme }}
+          PICTURES: ${{ inputs.pictures }}
+        run: |
+          if [ -f art-samples/WANTED ]; then
+            read -r -a want < art-samples/WANTED || true
+          else
+            want=($THEME $PICTURES)
+          fi
+          node scripts/make-art.mjs --models | head -40 || true
+          node scripts/make-art.mjs "${want[@]}"
+          rm -f art-samples/WANTED
+      - name: Commit
+        if: steps.key.outputs.ok == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A art-samples
+          if git diff --cached --quiet; then echo "Nothing new."; exit 0; fi
+          git commit -m "Add theme art samples"
+          git push
