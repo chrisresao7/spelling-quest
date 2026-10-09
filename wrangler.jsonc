@@ -10,5 +10,8 @@
     // Only the recordings API runs code; everything else is served straight from dist/.
     "run_worker_first": ["/api/*"]
   },
-  "r2_buckets": [{ "binding": "RECORDINGS", "bucket_name": "spelling-quest-recordings" }]
+  "r2_buckets": [{ "binding": "RECORDINGS", "bucket_name": "spelling-quest-recordings" }],
+  // Preview builds of a pull request (`npx wrangler preview`) get no recordings bucket, so a
+  // test version can never change the family's recordings. They keep recordings on the device.
+  "previews": { "r2_buckets": [] }
 }

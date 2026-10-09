@@ -1,6 +1,7 @@
 <script setup>
 // Which Looks Right? Hear the word, then tap the one spelt right out of three.
-// The wrong ones use the other spellings of the sound: sail / sayl / sale.
+// The wrong ones use the other spellings of the sound (sail / sayl / sayle), or the week
+// file's own list for a word with no sound to swap (two / tu / twoo).
 import { computed, onMounted, ref } from 'vue'
 import SceneFrame from '../components/SceneFrame.vue'
 import CharacterBubble from '../components/CharacterBubble.vue'
@@ -23,7 +24,7 @@ const { scene, line } = useTheme()
 const progress = useProgress()
 const s = scene(props.sceneKey)
 
-const round = useRound(props.week.words.filter((w) => w.pattern))
+const round = useRound(props.week.words)
 const say = ref(s.prompt || GAME_LINES.lookRightPrompt)
 const mood = ref('happy')
 const options = ref([])
@@ -38,7 +39,7 @@ function newWord() {
   if (!w) return
   wrong.value = new Set()
   solved.value = false
-  options.value = shuffle([w.text, ...lookalikes(w, props.week.graphemes, { isWord: props.week.isWord })])
+  options.value = shuffle([w.text, ...lookalikes(w, props.week.graphemes, { extra: props.week.mistakes[w.text], isWord: props.week.isWord })])
   sayWord(w.text)
 }
 
@@ -61,7 +62,7 @@ function choose(text) {
   } else {
     wrong.value = new Set([...wrong.value, text])
     mood.value = 'thinking'
-    say.value = props.week.tips[w.pattern] || line('tryAgain')
+    say.value = props.week.tips[w.pattern] || props.week.tips[w.text] || line('tryAgain')
   }
 }
 

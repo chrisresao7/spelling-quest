@@ -15,6 +15,8 @@ import { GAME_LINES, spellOut } from '../lib/gameLines.js'
 
 const props = defineProps({
   week: { type: Object, required: true },
+  // The words to catch: the week's tricky words unless given.
+  words: { type: Array, default: null },
   sceneKey: { type: String, default: 'trickyCatch' },
   // How many times each tricky word has to be caught.
   repeats: { type: Number, default: 2 },
@@ -25,7 +27,7 @@ const { scene, line } = useTheme()
 const progress = useProgress()
 const s = scene(props.sceneKey)
 
-const round = useRound(props.week.tricky.flatMap((w) => Array(props.repeats).fill(w)))
+const round = useRound((props.words || props.week.tricky).flatMap((w) => Array(props.repeats).fill(w)))
 const say = ref('')
 const mood = ref('happy')
 const bubbles = ref([])
@@ -40,7 +42,7 @@ function newTurn() {
   if (!w) return
   misses = 0
   turn.value++
-  const wrong = lookalikes(w, [], { extra: props.week.trickyMistakes?.[w.text], isWord: props.week.isWord })
+  const wrong = lookalikes(w, [], { extra: props.week.mistakes[w.text], isWord: props.week.isWord })
   const lanes = shuffle([0, 1, 2])
   bubbles.value = shuffle([w.text, ...wrong]).map((text, i) => ({
     text,

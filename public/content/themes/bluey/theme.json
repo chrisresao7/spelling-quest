@@ -116,6 +116,14 @@
         "prompt": "Listen, then catch the bubble that's spelt right!",
         "background": "art/bg-rockpool.svg",
         "item": "art/item-bubble.svg"
+      },
+      "wordCatch": {
+        "speaker": "sidekick",
+        "title": "Bubble catch",
+        "intro": "Look, this week's words are floating up out of the rock pool in bubbles! Listen, then catch the bubble that's spelt right before it floats away.",
+        "prompt": "Listen, then catch the bubble that's spelt right!",
+        "background": "art/bg-rockpool.svg",
+        "item": "art/item-bubble.svg"
       }
     }
   },

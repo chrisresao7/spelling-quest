@@ -1,0 +1,27 @@
+{
+  "id": "2026-10-07",
+  "title": "Numbers to ten",
+  "words": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "m[a]k[e]"],
+  "graphemes": ["a_e"],
+  "tricky": [],
+  "mistakes": {
+    "one": ["wun", "wonn"],
+    "two": ["tu", "twoo"],
+    "three": ["thre", "threa"],
+    "four": ["foor", "fowr"],
+    "five": ["fiv", "fiev"],
+    "six": ["siks", "sixe"],
+    "seven": ["sevun", "sevn"],
+    "eight": ["eigt", "ayt"],
+    "nine": ["nien", "nin"],
+    "ten": ["tenn", "tene"],
+    "make": ["mayk", "maik"]
+  },
+  "tips": {
+    "one": "'one' is a tricky word. It sounds like 'wun' but it's spelt o, n, e.",
+    "two": "'two' has a 'w' you can't hear: t, w, o.",
+    "four": "'four' is spelt f, o, u, r. Don't forget the 'u'!",
+    "eight": "'eight' has 'eigh' making the ay sound, like in weigh.",
+    "a_e": "Split 'a_e': the 'e' jumps to the end and makes the 'a' say its name."
+  }
+}
