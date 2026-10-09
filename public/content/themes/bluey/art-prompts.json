@@ -1,12 +1,12 @@
 {
   "model": "de7d3faf-762f-48e0-b3b7-9d0ac3a3fcf3",
-  "style": "Soft storybook children's TV animation style, flat 2D look, simple rounded shapes, no outlines, shapes defined by colour fills only, warm saturated pastels, sunny yellows, soft blues and gentle oranges, faint paper grain texture, bright airy Australian summer light, clean and minimal, camera at a child's eye level",
+  "style": "Copy the art style of the Australian children's cartoon Bluey as closely as possible. Soft storybook children's TV animation style, flat 2D look, simple rounded shapes, no outlines, shapes defined by colour fills only, warm saturated pastels, sunny yellows, soft blues and gentle oranges, faint paper grain texture, bright airy Australian summer light, clean and minimal, camera at a child's eye level",
   "negative": "text, letters, words, logo, watermark, signature, photo, realistic, 3d render, black outlines, thick linework, scary, extra limbs, extra fingers, people, humans",
   "kinds": {
     "character": {
       "width": 1024,
       "height": 1024,
-      "prompt": "Full-body original cartoon puppy character standing upright on two legs like a small child, big rounded head, long rounded snout, tall pointed ears, small dark oval eyes, thin arms and legs, short body, facing right in three-quarter view, feet on the bottom edge, centred, plain flat white background, nothing else in the picture",
+      "prompt": "Full-body cartoon puppy character drawn exactly in the Bluey cartoon style, but our own new character, not Bluey, Bingo or any other existing character, standing upright on two legs like a small child, big rounded head, long rounded snout, tall pointed ears, small dark oval eyes, thin arms and legs, short body, facing right in three-quarter view, feet on the bottom edge, centred, plain flat white background, nothing else in the picture",
       "transparent": true
     },
     "background": {

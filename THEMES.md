@@ -82,4 +82,4 @@ Each theme can have an `art-prompts.json` that describes every picture: a shared
 - To ask for pictures in a pull request, add a file `art-samples/WANTED` holding the theme and, if you want only some, the picture names: `bluey bg-house pup-blue-happy`. Or run the workflow from the Actions tab.
 - Without an API key, paste the style, kind and picture prompts together into the Leonardo website instead.
 - Chosen pictures are copied into the theme's `art/` folder and named in `theme.json`. Delete `art-samples/` once you've chosen.
-- Describe the look in words. Never name a TV show or its characters in a prompt, so the pictures stay original.
+- A prompt may name a show whose art style the theme copies, but characters are always our own new ones, never the show's.
