@@ -36,13 +36,19 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref || github.ref }}
+          fetch-depth: 2
       - uses: actions/setup-node@v4
         with:
           node-version: 22
       - name: Check the key is set up
         id: key
         run: |
-          if [ -z "$LEONARDO_API_KEY" ]; then
+          # GitHub runs this on every push to a pull request that has a WANTED file, so only
+          # make pictures when the latest push changed it (pictures cost Leonardo credits).
+          if [ "${{ github.event_name }}" = pull_request ] && git diff --quiet HEAD~1 HEAD -- art-samples/WANTED; then
+            echo "The last push didn't change art-samples/WANTED, so no pictures were made."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          elif [ -z "$LEONARDO_API_KEY" ]; then
             echo "::notice::No LEONARDO_API_KEY secret yet, so no pictures were made."
             echo "ok=false" >> "$GITHUB_OUTPUT"
           else
