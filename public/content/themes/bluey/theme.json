@@ -64,7 +64,7 @@
   "story": {
     "title": "Beach Day",
     "intro": "It's a hot, sunny day and {hero} and {sidekick} are going to the beach! But first there's lots to do. Can you help?",
-    "background": "art/bg-house.svg",
+    "background": "art/bg-house.webp",
     "endTitle": "Best beach day ever!",
     "ending": "The sun is going down. {hero} and {sidekick} are sandy, tired and happy. Thanks for helping with all those words!",
     "endBackground": "art/bg-sunset.svg",
@@ -74,7 +74,7 @@
         "title": "Pack the beach bags",
         "intro": "We've got four beach bags, one for each way to spell the ay sound. Help me put every word in the right bag!",
         "prompt": "Which bag does this word go in?",
-        "background": "art/bg-house.svg",
+        "background": "art/bg-house.webp",
         "item": "art/item-bag.svg"
       },
       "pickPatch": {
