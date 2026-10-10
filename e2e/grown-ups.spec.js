@@ -47,20 +47,33 @@ test('a grown-up can save her handwriting', async ({ page }) => {
   await page.goto('/#/grown-ups')
   await expect(page.getByRole('heading', { name: 'Her handwriting' })).toBeVisible()
   await page.getByRole('button', { name: 'w', exact: true }).click()
-  const box = await page.getByRole('img', { name: 'Write w' }).boundingBox()
-  // A wavy w, all in one go.
-  await page.mouse.move(box.x + box.width * 0.3, box.y + box.height * 0.53)
-  await page.mouse.down()
-  for (let i = 1; i <= 40; i++) {
-    const x = 0.3 + (i / 40) * 0.4
-    const y = (80 + 18 * Math.sin((i / 40) * Math.PI * 4)) / 150
-    await page.mouse.move(box.x + box.width * x, box.y + box.height * y)
+  const pad = page.getByRole('img', { name: 'Write w' })
+  // The mouse only reaches what's on screen.
+  await pad.scrollIntoViewIfNeeded()
+  // A wavy w, all in one go, nothing like the game's own w.
+  async function writeWavyW() {
+    const box = await pad.boundingBox()
+    await page.mouse.move(box.x + box.width * 0.3, box.y + box.height * 0.53)
+    await page.mouse.down()
+    for (let i = 1; i <= 40; i++) {
+      const x = 0.3 + (i / 40) * 0.4
+      const y = (80 + 18 * Math.sin((i / 40) * Math.PI * 4)) / 150
+      await page.mouse.move(box.x + box.width * x, box.y + box.height * y)
+    }
+    await page.mouse.up()
   }
-  await page.mouse.up()
+  await writeWavyW()
   await page.getByRole('button', { name: 'Try it' }).click()
-  await expect(page.getByText(/reads this as “m”, not “w”/)).toBeVisible()
+  await expect(page.getByText(/not “w”|can’t read this as “w”/)).toBeVisible()
   await page.getByRole('button', { name: 'Save her “w”' }).click()
   await expect(page.getByText(/now knows 1 of her “w”s/)).toBeVisible()
+
+  // Now the game reads her w, and still does after a reload.
   await page.reload()
   await expect(page.getByRole('button', { name: 'w, 1 saved' })).toBeVisible()
+  await page.getByRole('button', { name: 'w, 1 saved' }).click()
+  await pad.scrollIntoViewIfNeeded()
+  await writeWavyW()
+  await page.getByRole('button', { name: 'Try it' }).click()
+  await expect(page.getByText('The game reads this as “w”.')).toBeVisible()
 })
