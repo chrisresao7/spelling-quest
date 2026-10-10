@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <!-- Placeholder drawn for Spelling Quest; to be replaced by Leonardo art. -->
+  <ellipse cx="154" cy="290" rx="80" ry="8" fill="#000" opacity="0.10"/>
+  <g fill="#ffffff" stroke="#d9cdf5" stroke-width="5">
+    <circle cx="96" cy="180" r="48"/><circle cx="212" cy="180" r="48"/><circle cx="130" cy="130" r="56"/><circle cx="190" cy="126" r="50"/>
+  </g>
+  <g fill="#ffffff"><circle cx="96" cy="180" r="45"/><circle cx="212" cy="180" r="45"/><circle cx="130" cy="130" r="53"/><circle cx="190" cy="126" r="47"/><rect x="96" y="140" width="116" height="85"/><ellipse cx="154" cy="210" rx="80" ry="22"/></g>
+  <path d="M118 160 q10 -12 20 0 M170 160 q10 -12 20 0" stroke="#3d2a66" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <ellipse cx="108" cy="182" rx="12" ry="7" fill="#ff8fb1" opacity="0.5"/><ellipse cx="202" cy="182" rx="12" ry="7" fill="#ff8fb1" opacity="0.5"/>
+  <path d="M136 182 q18 20 36 0Z" fill="#ff6b8a" stroke="#3d2a66" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M110 238 q-6 12 0 16 q6 -4 0 -16z" fill="#ff6b6b"/><path d="M128 238 q-6 12 0 16 q6 -4 0 -16z" fill="#ffa94d"/><path d="M146 238 q-6 12 0 16 q6 -4 0 -16z" fill="#ffd43b"/><path d="M164 238 q-6 12 0 16 q6 -4 0 -16z" fill="#69db7c"/><path d="M182 238 q-6 12 0 16 q6 -4 0 -16z" fill="#4dabf7"/><path d="M200 238 q-6 12 0 16 q6 -4 0 -16z" fill="#b197fc"/>
+</svg>

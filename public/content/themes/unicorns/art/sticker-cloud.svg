@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200">
+  <!-- Placeholder drawn for Spelling Quest; to be replaced by Leonardo art. -->
+  <circle r="92" fill="#fff"/><circle r="80" fill="#e7f5ff"/>
+  <g fill="#fff" stroke="#b9a7f2" stroke-width="4"><circle cx="-34" cy="10" r="28"/><circle cx="34" cy="10" r="28"/><circle cx="0" cy="-14" r="36"/></g><g fill="#fff"><circle cx="-34" cy="10" r="26"/><circle cx="34" cy="10" r="26"/><circle cx="0" cy="-14" r="34"/><rect x="-34" y="0" width="68" height="36"/></g><path d="M-14 0 q6 -8 12 0 M4 0 q6 -8 12 0" stroke="#3d2a66" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M-8 14 q8 8 16 0" stroke="#3d2a66" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

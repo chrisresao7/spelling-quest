@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <!-- Placeholder drawn for Spelling Quest; to be replaced by Leonardo art. -->
+  <ellipse cx="150" cy="290" rx="100" ry="8" fill="#000" opacity="0.12"/>
+  <path d="M62 168 q-34 -10 -40 30" stroke="#ff6b6b" stroke-width="11" stroke-linecap="round" fill="none"/><path d="M62 168 q-34 -2 -40 38" stroke="#ffa94d" stroke-width="11" stroke-linecap="round" fill="none"/><path d="M62 168 q-34 6 -40 46" stroke="#ffd43b" stroke-width="11" stroke-linecap="round" fill="none"/><path d="M62 168 q-34 14 -40 54" stroke="#69db7c" stroke-width="11" stroke-linecap="round" fill="none"/><path d="M62 168 q-34 22 -40 62" stroke="#4dabf7" stroke-width="11" stroke-linecap="round" fill="none"/><path d="M62 168 q-34 30 -40 70" stroke="#b197fc" stroke-width="11" stroke-linecap="round" fill="none"/>
+  <rect x="80" y="200" width="24" height="84" rx="12" fill="#e6dafc"/><ellipse cx="92" cy="282" rx="16" ry="8" fill="#b197fc"/>
+  <rect x="120" y="204" width="24" height="80" rx="12" fill="#e6dafc"/><ellipse cx="132" cy="282" rx="16" ry="8" fill="#b197fc"/>
+  <rect x="160" y="204" width="24" height="80" rx="12" fill="#f4ecff"/><ellipse cx="172" cy="282" rx="16" ry="8" fill="#b197fc"/>
+  <ellipse cx="135" cy="190" rx="82" ry="48" fill="#f4ecff"/>
+  <path d="M170 170 Q176 120 190 96 L226 112 Q206 140 206 190Z" fill="#f4ecff"/>
+  <path d="M196 214 q30 -14 46 -44" stroke="#f4ecff" stroke-width="22" stroke-linecap="round" fill="none"/><ellipse cx="244" cy="166" rx="12" ry="10" fill="#b197fc"/>
+  <ellipse cx="212" cy="100" rx="46" ry="40" fill="#f4ecff"/>
+  <ellipse cx="240" cy="118" rx="28" ry="22" fill="#f4ecff"/>
+  <circle cx="254" cy="112" r="3.5" fill="#c9a6e8"/>
+  <path d="M188 66 l-12 -26 22 16z" fill="#f4ecff"/><path d="M188 60 l-7 -14 12 9z" fill="#ffc2dc"/>
+  <path d="M208 62 L228 6 L232 66Z" fill="#ffd43b"/><path d="M212 50 l16 -6 M216 36 l12 -5 M220 22 l9 -4" stroke="#f0b400" stroke-width="3"/>
+  <path d="M150 60 q-30 6 -42 26" stroke="#ff6b6b" stroke-width="15" stroke-linecap="round" fill="none"/><path d="M156 73 q-30 6 -42 28" stroke="#ffa94d" stroke-width="15" stroke-linecap="round" fill="none"/><path d="M162 86 q-30 6 -42 30" stroke="#ffd43b" stroke-width="15" stroke-linecap="round" fill="none"/><path d="M168 99 q-30 6 -42 32" stroke="#69db7c" stroke-width="15" stroke-linecap="round" fill="none"/><path d="M174 112 q-30 6 -42 34" stroke="#4dabf7" stroke-width="15" stroke-linecap="round" fill="none"/><path d="M180 125 q-30 6 -42 36" stroke="#b197fc" stroke-width="15" stroke-linecap="round" fill="none"/>
+  <path d="M196 92 q9 -11 18 0" stroke="#3d2a66" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <ellipse cx="222" cy="114" rx="10" ry="6" fill="#ff8fb1" opacity="0.5"/>
+  <path d="M226 128 q12 12 24 -2" stroke="#3d2a66" stroke-width="5" stroke-linecap="round" fill="#ff8fb1"/>
+  <g fill="#ffd43b"><path d="M262 40 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/><path d="M36 70 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4z"/></g>
+</svg>

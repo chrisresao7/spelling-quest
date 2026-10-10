@@ -95,21 +95,21 @@ async function samples() {
   if (!KEY) throw new Error('GOOGLE_TTS_API_KEY is not set')
   const out = 'voice-samples'
   mkdirSync(out, { recursive: true })
-  const lines = {
-    'en-AU': "G'day! It's a hot, sunny day, and we're off to the beach. Can you help us pack?",
-    'en-GB': 'make. sail. clay. great. said.',
-  }
+  // Each set: the accent, which voices to try, and a line in the style of the theme.
+  const sets = [
+    { lang: 'en-AU', voices: /Neural2|Chirp3-HD/, text: "G'day! It's a hot, sunny day, and we're off to the beach. Can you help us pack?" },
+    { lang: 'en-GB', voices: /Chirp3-HD/, text: 'Oh no! The rainbow has lost its colours. Every word you spell paints a colour back!' },
+    { lang: 'en-GB', voices: /Neural2/, text: 'make. sail. clay. great. said.', rate: 0.8 },
+  ]
   const list = []
-  for (const [lang, text] of Object.entries(lines)) {
+  for (const { lang, voices: pattern, text, rate = 1 } of sets) {
     const res = await fetch(`${API}/voices?languageCode=${lang}`, { headers: { 'X-Goog-Api-Key': KEY } })
     if (!res.ok) throw new Error(`Couldn't list voices: ${res.status} ${await res.text()}`)
-    const voices = (await res.json()).voices
-      .filter((v) => (lang === 'en-AU' ? /Neural2|Chirp3-HD/ : /Neural2/).test(v.name))
-      .sort((a, b) => a.name.localeCompare(b.name))
+    const voices = (await res.json()).voices.filter((v) => pattern.test(v.name)).sort((a, b) => a.name.localeCompare(b.name))
     for (const v of voices) {
       const file = `${v.name}-${v.ssmlGender.toLowerCase()}.mp3`
       try {
-        writeFileSync(join(out, file), await synthesize(text, { name: v.name, rate: lang === 'en-GB' ? 0.8 : 1 }))
+        writeFileSync(join(out, file), await synthesize(text, { name: v.name, rate }))
         list.push(file)
         process.stdout.write('.')
       } catch (e) {

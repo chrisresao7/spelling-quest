@@ -1,0 +1,140 @@
+{
+  "name": "Rainbow Valley",
+  "characters": {
+    "hero": {
+      "name": "Pip",
+      "art": {
+        "happy": "art/unicorn-happy.svg",
+        "thinking": "art/unicorn-thinking.svg"
+      }
+    },
+    "sidekick": {
+      "name": "Puff",
+      "art": {
+        "happy": "art/cloud-happy.svg",
+        "thinking": "art/cloud-thinking.svg"
+      }
+    }
+  },
+  "voice": {
+    "engine": "google",
+    "narrator": {
+      "name": "en-GB-Chirp3-HD-Aoede",
+      "rate": 1
+    },
+    "hero": {
+      "name": "en-GB-Chirp3-HD-Leda",
+      "rate": 1.05
+    },
+    "sidekick": {
+      "name": "en-GB-Chirp3-HD-Puck",
+      "rate": 1.05
+    },
+    "word": {
+      "name": "en-GB-Neural2-F",
+      "rate": 0.8
+    },
+    "browser": {
+      "lang": "en-GB"
+    }
+  },
+  "home": {
+    "background": "art/bg-valley.svg"
+  },
+  "lines": {
+    "correct": [
+      "Hooray! {word}!",
+      "Yes! That's {word}!",
+      "Sparkly spelling! {word}!",
+      "You got it! {word}!",
+      "Another colour for the rainbow!"
+    ],
+    "tryAgain": [
+      "Ooh, so close! Have another go.",
+      "Not that one. Listen again!",
+      "Hmm, let's think about it."
+    ],
+    "prompt": [
+      "Which paint pot does this word go in?"
+    ],
+    "chapterEnd": [
+      "The rainbow is back!"
+    ]
+  },
+  "story": {
+    "title": "The faded rainbow",
+    "intro": "Oh no! The rainbow over Rainbow Valley has lost its colours. {hero} the unicorn and {sidekick} the little cloud need your help. Every word you spell paints a colour back!",
+    "background": "art/bg-valley.svg",
+    "endTitle": "The rainbow is back!",
+    "ending": "Red, orange, yellow, green, blue and purple! The rainbow shines over Rainbow Valley again. {hero} and {sidekick} say thank you for all those wonderful words!",
+    "endBackground": "art/bg-rainbow.svg",
+    "scenes": {
+      "soundSort": {
+        "speaker": "hero",
+        "title": "The paint pots",
+        "intro": "We've got a paint pot for each way to spell this week's sound. Help me put every word in the right pot!",
+        "prompt": "Which paint pot does this word go in?",
+        "background": "art/bg-meadow.svg",
+        "item": "art/item-paint.svg"
+      },
+      "pickPatch": {
+        "speaker": "sidekick",
+        "title": "The rainbow bridge",
+        "intro": "The stepping stones on the rainbow bridge have letters missing! Listen to the word, then pick the missing letters so we can cross.",
+        "prompt": "Listen, then pick the missing letters!",
+        "background": "art/bg-bridge.svg",
+        "item": "art/item-star.svg"
+      },
+      "lookRight": {
+        "speaker": "hero",
+        "title": "The cupcake stall",
+        "intro": "Mmm, cupcakes! But the baker has written her sign three different ways. Listen to the word and find the one that's spelt right.",
+        "prompt": "Which one is spelt right?",
+        "background": "art/bg-stall.svg",
+        "item": "art/item-cupcake.svg"
+      },
+      "spellIt": {
+        "speaker": "sidekick",
+        "title": "Writing in the sky",
+        "intro": "Let's write the words in the sky with my fluffy cloud, before the wind blows them away! Look at the word, then spell it with the letters.",
+        "prompt": "Look at the word and say it. Tap the button when you're ready!",
+        "background": "art/bg-sky.svg",
+        "item": "art/item-cloud.svg"
+      },
+      "tricky": {
+        "speaker": "hero",
+        "title": "The crystal cave",
+        "intro": "The tricky words are hiding in the crystal cave! They don't follow the rules, so we just have to remember them.",
+        "prompt": "This is a tricky word. Look really carefully!",
+        "background": "art/bg-cave.svg",
+        "item": "art/item-crystal.svg"
+      },
+      "trickyCatch": {
+        "speaker": "sidekick",
+        "title": "Waterfall bubbles",
+        "intro": "Look, the tricky words are floating up from the waterfall in rainbow bubbles! Listen, then catch the bubble that's spelt right before it floats away.",
+        "prompt": "Listen, then catch the bubble that's spelt right!",
+        "background": "art/bg-waterfall.svg",
+        "item": "art/item-bubble.svg"
+      },
+      "wordCatch": {
+        "speaker": "sidekick",
+        "title": "Waterfall bubbles",
+        "intro": "Look, this week's words are floating up from the waterfall in rainbow bubbles! Listen, then catch the bubble that's spelt right before it floats away.",
+        "prompt": "Listen, then catch the bubble that's spelt right!",
+        "background": "art/bg-waterfall.svg",
+        "item": "art/item-bubble.svg"
+      }
+    }
+  },
+  "rewards": [
+    "art/sticker-rainbow.svg",
+    "art/sticker-star.svg",
+    "art/sticker-cupcake.svg",
+    "art/sticker-crystal.svg",
+    "art/sticker-heart.svg",
+    "art/sticker-cloud.svg",
+    "art/sticker-moon.svg",
+    "art/sticker-flower.svg"
+  ]
+}

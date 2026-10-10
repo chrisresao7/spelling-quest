@@ -1,0 +1,32 @@
+/* Rainbow Valley: pastel skies, rainbows, a unicorn and a little cloud. Overrides the variables in src/styles.css. */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&display=swap');
+
+:root[data-theme='unicorns'] {
+  --sq-bg: #e9dcff;
+  --sq-surface: #fffbff;
+  --sq-surface-text: #3d2a66;
+  --sq-text: #3d2a66;
+  --sq-muted: #76669a;
+  --sq-primary: #8a5cd6;
+  --sq-primary-text: #ffffff;
+  --sq-accent: #ff8fc7;
+  --sq-good: #2a9d63;
+  --sq-bad: #de4f45;
+  --sq-focus: #d6333a;
+  --sq-tile: #fff3fa;
+  --sq-tile-edge: #e7a6d0;
+  --sq-display: 'Fredoka', 'Andika', system-ui, sans-serif;
+  --sq-radius: 28px;
+  --sq-shadow: 0 6px 0 rgba(61, 42, 102, 0.16);
+
+  /* The four paint pots in Sound Sort. */
+  --sq-bucket: #8a5cd6;
+  --sq-bucket-2: #f08a3c;
+  --sq-bucket-3: #2fa8b8;
+  --sq-bucket-4: #e2579b;
+}
+
+/* Panels have a soft rainbow-pink rim. */
+:root[data-theme='unicorns'] .panel {
+  border: 4px solid #f6d3ec;
+}

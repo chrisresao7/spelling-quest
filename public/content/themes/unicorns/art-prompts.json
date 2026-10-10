@@ -1,0 +1,110 @@
+{
+  "model": "de7d3faf-762f-48e0-b3b7-9d0ac3a3fcf3",
+  "style": "Cartoon art for a children's animated TV show, like a cosy 1990s Nintendo game. Very simple rounded flat shapes, bold clean flat colours with only one soft shade per shape, no outlines, no brushstrokes, no fine detail. Soft pastel rainbow colours: lilac, pink, mint green, sky blue and sunny yellow. Sweet, friendly and magical.",
+  "negative": "realistic, photorealistic, painterly, brushstrokes, oil painting, detailed texture, fur texture, 3d render, glossy, shiny, realistic lighting, dramatic shadows, thick outlines, scary, extra limbs, extra legs, extra horns, people, humans, text, letters, words, signature, watermark",
+  "kinds": {
+    "character": {
+      "width": 1024,
+      "height": 1024,
+      "prompt": "Full-body cartoon character, our own original character, isolated on a plain flat white background, no scenery, standing on the bottom edge, facing right in three-quarter view, centred, nothing else in the picture",
+      "transparent": true
+    },
+    "background": {
+      "width": 1536,
+      "height": 960,
+      "prompt": "Wide cartoon background, no characters, no animals, interesting detail in the top half, a wide plain open area of grass or ground across the bottom third, soft gradient sky"
+    },
+    "sticker": {
+      "width": 768,
+      "height": 768,
+      "prompt": "Round sticker, a single simple object centred on a pale circular sticker with a thick white border, plain white background outside the sticker",
+      "transparent": true
+    }
+  },
+  "pictures": {
+    "unicorn-happy": {
+      "kind": "character",
+      "seed": 51,
+      "prompt": "A cute young unicorn foal with a big rounded head, a short soft body and short legs. Pale lilac-white coat, a flowing rainbow mane and rainbow tail, a small golden spiral horn, little lilac hooves, small dark dot eyes and rosy cheeks. Very happy, big smile, prancing with one front leg lifted."
+    },
+    "unicorn-thinking": {
+      "kind": "character",
+      "seed": 51,
+      "prompt": "A cute young unicorn foal with a big rounded head, a short soft body and short legs. Pale lilac-white coat, a flowing rainbow mane and rainbow tail, a small golden spiral horn, little lilac hooves, small dark dot eyes and rosy cheeks. Thinking, head tilted, looking up, small puzzled mouth, standing on all four hooves."
+    },
+    "cloud-happy": {
+      "kind": "character",
+      "seed": 52,
+      "prompt": "A cute little fluffy white cloud character, round and puffy, with a simple happy face: two small dark dot eyes, rosy cheeks and a big smile. Tiny rainbow-coloured raindrops falling under it."
+    },
+    "cloud-thinking": {
+      "kind": "character",
+      "seed": 52,
+      "prompt": "A cute little fluffy white cloud character, round and puffy, with a simple face: two small dark dot eyes looking up, rosy cheeks and a small round 'oh' mouth, thinking."
+    },
+    "bg-valley": {
+      "kind": "background",
+      "prompt": "A green valley of soft rolling hills with a pale faded grey rainbow arching across the sky, one round tree, little flowers, a lilac and pink sky with fluffy white clouds."
+    },
+    "bg-meadow": {
+      "kind": "background",
+      "prompt": "A flower meadow with a little pastel pink cottage with a lilac roof and round windows on the right, soft green hills, fluffy clouds, a lilac sky."
+    },
+    "bg-bridge": {
+      "kind": "background",
+      "prompt": "A bright rainbow arching over a gentle blue stream like a bridge, round stepping stones, soft green hills on both banks, fluffy clouds, a lilac sky."
+    },
+    "bg-stall": {
+      "kind": "background",
+      "prompt": "A sweet little cupcake stall with a pink and white striped awning and a row of pastel cupcakes on the counter, on the right, soft green hills, fluffy clouds, a lilac sky. The stall has no sign and no writing."
+    },
+    "bg-sky": {
+      "kind": "background",
+      "prompt": "High up in a bright blue sky full of big fluffy white clouds, small sparkles, soft green hilltops far below across the bottom."
+    },
+    "bg-cave": {
+      "kind": "background",
+      "prompt": "Inside a magical crystal cave, deep purple rock, glowing pink, blue and mint crystals growing from the walls and ceiling, soft sparkles, a smooth flat purple cave floor across the bottom."
+    },
+    "bg-waterfall": {
+      "kind": "background",
+      "prompt": "A gentle waterfall falling from lilac rocks into a round blue pool, a soft rainbow in the spray, floating bubbles, green grass and flowers around the pool across the bottom, fluffy clouds."
+    },
+    "bg-rainbow": {
+      "kind": "background",
+      "prompt": "A huge bright rainbow with all its colours shining across a pink and blue sky over soft green hills, fluffy white clouds, flowers, happy and celebratory."
+    },
+    "sticker-rainbow": {
+      "kind": "sticker",
+      "prompt": "A bright rainbow with a fluffy white cloud at each end."
+    },
+    "sticker-star": {
+      "kind": "sticker",
+      "prompt": "A smiling yellow star."
+    },
+    "sticker-cupcake": {
+      "kind": "sticker",
+      "prompt": "A pink cupcake with sprinkles and a cherry on top."
+    },
+    "sticker-crystal": {
+      "kind": "sticker",
+      "prompt": "A sparkly purple crystal gem."
+    },
+    "sticker-heart": {
+      "kind": "sticker",
+      "prompt": "A shiny pink heart."
+    },
+    "sticker-cloud": {
+      "kind": "sticker",
+      "prompt": "A smiling little fluffy white cloud."
+    },
+    "sticker-moon": {
+      "kind": "sticker",
+      "prompt": "A yellow crescent moon with little stars on a dark purple night sky."
+    },
+    "sticker-flower": {
+      "kind": "sticker",
+      "prompt": "A flower with rainbow-coloured petals."
+    }
+  }
+}

@@ -102,7 +102,7 @@ function everythingSaid(theme, week) {
   return out
 }
 
-describe.each(['bluey', '_template'])('voice clips for the %s theme', (id) => {
+describe.each(['bluey', 'unicorns', '_template'])('voice clips for the %s theme', (id) => {
   const theme = themeFile(id)
   const lines = spokenLines(theme, weeks)
   const has = (role) => (t) => lines.some((l) => l.role === role && l.text === t)
