@@ -51,6 +51,17 @@ async function spellRound(page, count) {
     await expect(shown).toBeVisible()
     const text = await shown.getAttribute('aria-label')
     await page.getByRole('button', { name: "I've got it!" }).click()
+    if (i === 0) {
+      // A typo can be wiped with Clear and the word started again, without it counting as a try.
+      const clear = page.getByRole('button', { name: 'Clear' })
+      await expect(clear).toBeDisabled()
+      await page.locator('.tile:not(.used)').first().click()
+      await page.locator('.tile:not(.used)').first().click()
+      await expect(page.locator('.slot.filled')).toHaveCount(2)
+      await clear.click()
+      await expect(page.locator('.slot.filled')).toHaveCount(0)
+      await expect(page.locator('.tile.used')).toHaveCount(0)
+    }
     for (const ch of text) {
       await page.locator('.tile:not(.used)', { hasText: new RegExp(`^\\s*${ch}\\s*$`) }).first().click()
     }
