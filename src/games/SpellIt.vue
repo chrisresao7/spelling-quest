@@ -73,6 +73,15 @@ function unplace(i) {
   slots.value[i] = null
 }
 
+// Wipe every letter so she can start the word again; it isn't a try, so nothing is recorded.
+function clear() {
+  if (phase.value !== 'build') return
+  slots.value.forEach((t) => t && (t.used = false))
+  slots.value = slots.value.map(() => null)
+}
+
+const anyPlaced = computed(() => slots.value.some(Boolean))
+
 function check() {
   const attempt = slots.value.map((t) => t.ch).join('')
   const right = attempt === word.value.text
@@ -129,11 +138,26 @@ onMounted(look)
           <SpeakButton v-if="phase === 'build'" :text="word.text" />
         </div>
 
-        <div v-if="phase === 'build'" class="tiles">
-          <button v-for="t in tiles" :key="t.id" class="tile" :class="{ used: t.used }" @click="place(t)">
-            {{ t.ch }}
+        <template v-if="phase === 'build'">
+          <div class="tiles">
+            <button v-for="t in tiles" :key="t.id" class="tile" :class="{ used: t.used }" @click="place(t)">
+              {{ t.ch }}
+            </button>
+          </div>
+          <button class="btn secondary clear" :disabled="!anyPlaced" @click="clear">
+            <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true">
+              <path
+                d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Clear
           </button>
-        </div>
+        </template>
 
         <div v-else-if="result === 'wrong'" class="answer">
           <div class="show small panel"><MarkedWord :word="word" /></div>
@@ -221,6 +245,13 @@ onMounted(look)
 .tile:active {
   transform: translateY(4px);
   box-shadow: 0 2px 0 var(--sq-tile-edge);
+}
+.clear {
+  min-width: 200px;
+  font-size: 1.4rem;
+}
+.clear:disabled {
+  opacity: 0.4;
 }
 .tile.used {
   opacity: 0.2;
