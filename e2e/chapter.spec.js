@@ -166,6 +166,11 @@ test('a whole chapter can be played on a tablet', async ({ page }, testInfo) => 
   await page.getByRole('button', { name: "I've got it!" }).click()
   const boxes = page.locator('svg.box[data-letter]')
   const first = await boxes.first().getAttribute('data-letter')
+  // Clear wipes the whole word to start again.
+  await writeLetter(page, boxes.first(), first)
+  await expect(boxes.first().locator('path.ink')).toHaveCount(letterGuide(first).length)
+  await page.getByRole('button', { name: 'Clear', exact: true }).click()
+  await expect(page.locator('svg.box path.ink')).toHaveCount(0)
   await page.getByRole('button', { name: 'Check', exact: true }).click()
   await expect(page.getByText('Write a letter in every box')).toBeVisible()
   await writeLetter(page, boxes.first(), first === 'x' ? 'o' : 'x')
