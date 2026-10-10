@@ -4,7 +4,6 @@ import { useProgress } from './stores/progress.js'
 import { applyTheme } from './composables/useTheme.js'
 import { loadThemeList } from './composables/content.js'
 import { loadRecordings } from './composables/useRecordings.js'
-import { useFullscreen } from './composables/useFullscreen.js'
 
 const progress = useProgress()
 const ready = ref(false)
@@ -24,7 +23,6 @@ async function useThemeFromSettings() {
 onMounted(() => {
   useThemeFromSettings()
   loadRecordings()
-  useFullscreen().autoEnter()
 })
 watch(() => progress.settings.theme, useThemeFromSettings)
 </script>

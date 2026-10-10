@@ -78,7 +78,7 @@ Until the bucket exists, recordings stay on the device they were made on.
 
 ## Full screen on a tablet
 
-- **Big screen** on the home page hides the browser's bars (it uses the browser's full screen mode, so it needs a tap; it hides itself where the browser can't do it). Browsers only allow full screen straight after a tap, so it can't start on its own, but once **Big screen** has been pressed on a device the game remembers and goes full screen again on the first tap anywhere (each time it's opened, and after the Back gesture). **Small screen** brings the bars back and turns that off for the device.
+- **Big screen** on the home page hides the browser's bars (it uses the browser's full screen mode, so it needs a tap; it hides itself where the browser can't do it). The tablet's Back gesture or **Small screen** brings the bars back.
 - **Add to Home Screen** in the browser's menu makes an icon that opens the game full screen (`public/manifest.webmanifest`). The manifest is fetched with the Cloudflare Access login cookie (`crossorigin="use-credentials"` in `index.html`), so sign in once in the browser before adding the icon.
 
 ### Home-screen icon
