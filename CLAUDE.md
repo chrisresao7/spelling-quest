@@ -26,5 +26,8 @@ must follow them. Each one is covered by a test; keep those tests passing and ad
 Other teaching choices already in place: the sound's letters are shown in red like the school sheet
 (`--sq-focus`), wrong answers never cost lives, missed words come back later in the round, and the
 teacher's tips from the week file are used as hints.
+In Write It (handwriting), only the letter itself can be wrong: how a letter was formed (start point, direction,
+sitting on the lines) only ever gives a tip, and mirror-image letters (b/d, p/q) must never be accepted for each other
+(`test/handwriting.test.js`).
 The week's sound on its own is only ever played from a grown-up's recording, never a computer voice,
 because speech engines say isolated sounds unreliably (`SoundButton.vue`, `useSpeech.js`).

@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs'
 import { parseWeek } from '../src/lib/words.js'
 import { planClips, spokenLines } from '../src/lib/voice.js'
 import { encodeWav } from '../src/lib/wav.js'
+import { letterGuide } from '../src/lib/handwriting.js'
 
 // Plays the first chapter from start to sticker, answering everything right.
 // Set SCREENSHOTS=dir to save a picture of each scene.
@@ -55,6 +56,40 @@ async function spellRound(page, count) {
     }
     await expect(page.locator('.slot.good')).toHaveCount(text.length)
     await expect(page.locator('.slot.good')).toHaveCount(0, { timeout: 5000 })
+  }
+}
+
+// Writes a letter in a box with the mouse, following the game's own model of it.
+async function writeLetter(page, box, letter) {
+  const r = await box.boundingBox()
+  const at = ([x, y]) => [r.x + (x / 100) * r.width, r.y + (y / 150) * r.height]
+  for (const stroke of letterGuide(letter)) {
+    await page.mouse.move(...at(stroke[0]))
+    await page.mouse.down()
+    for (const p of stroke.slice(1)) await page.mouse.move(...at(p), { steps: 2 })
+    await page.mouse.up()
+  }
+}
+
+async function writeWord(page) {
+  const boxes = page.locator('svg.box[data-letter]')
+  const n = await boxes.count()
+  for (let i = 0; i < n; i++) await writeLetter(page, boxes.nth(i), await boxes.nth(i).getAttribute('data-letter'))
+}
+
+async function writeRound(page, count, testInfo) {
+  for (let i = 0; i < count; i++) {
+    const shown = page.locator('.show .word')
+    await expect(shown).toBeVisible()
+    const text = await shown.getAttribute('aria-label')
+    await page.getByRole('button', { name: "I've got it!" }).click()
+    await expect(page.locator('svg.box[data-letter]')).toHaveCount(text.length)
+    await writeWord(page)
+    if (i === 0 && testInfo) await snap(page, testInfo, '6b-write-it')
+    await page.getByRole('button', { name: 'Check', exact: true }).click()
+    await expect(page.locator('svg.box.good, svg.box.tip')).toHaveCount(text.length)
+    if (await page.locator('svg.box.tip').count()) await page.getByRole('button', { name: 'Next' }).click()
+    await expect(page.locator('svg.box[data-letter]')).toHaveCount(0, { timeout: 5000 })
   }
 }
 
@@ -125,6 +160,27 @@ test('a whole chapter can be played on a tablet', async ({ page }, testInfo) => 
   // The other six words, plus the missed one again.
   await spellRound(page, week.words.length)
 
+  // Write It: one letter wrong first, so it's shown being written and written again.
+  await expect(page.getByRole('heading', { name: 'Stick writing' })).toBeVisible()
+  await page.getByRole('button', { name: 'Let’s go!' }).click()
+  await page.getByRole('button', { name: "I've got it!" }).click()
+  const boxes = page.locator('svg.box[data-letter]')
+  const first = await boxes.first().getAttribute('data-letter')
+  await page.getByRole('button', { name: 'Check', exact: true }).click()
+  await expect(page.getByText('Write a letter in every box')).toBeVisible()
+  await writeLetter(page, boxes.first(), first === 'x' ? 'o' : 'x')
+  for (let i = 1; i < (await boxes.count()); i++) await writeLetter(page, boxes.nth(i), await boxes.nth(i).getAttribute('data-letter'))
+  await page.getByRole('button', { name: 'Check', exact: true }).click()
+  await expect(page.locator('svg.box.bad')).toHaveCount(1)
+  await expect(page.locator('svg.box.bad .guide')).toHaveCount(1)
+  await snap(page, testInfo, '6c-write-fix')
+  await writeLetter(page, boxes.first(), first)
+  await page.getByRole('button', { name: 'Check', exact: true }).click()
+  await expect(page.locator('svg.box.bad')).toHaveCount(0)
+  if (await page.locator('svg.box.tip').count()) await page.getByRole('button', { name: 'Next' }).click()
+  // Three more words, plus the one that needed a second go.
+  await writeRound(page, 4, testInfo)
+
   // Tricky words
   await expect(page.getByRole('heading', { name: 'Tricky rock pool' })).toBeVisible()
   await page.getByRole('button', { name: 'Let’s go!' }).click()
@@ -187,6 +243,10 @@ test('a week with no sound skips the sound games', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Write in the sand' })).toBeVisible()
   await page.getByRole('button', { name: 'Let’s go!' }).click()
   await spellRound(page, numbers.words.length)
+
+  await expect(page.getByRole('heading', { name: 'Stick writing' })).toBeVisible()
+  await page.getByRole('button', { name: 'Let’s go!' }).click()
+  await writeRound(page, 4)
 
   await expect(page.getByRole('heading', { name: 'Bubble catch' })).toBeVisible()
   await page.getByRole('button', { name: 'Let’s go!' }).click()

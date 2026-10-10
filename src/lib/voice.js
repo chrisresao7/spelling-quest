@@ -12,7 +12,7 @@ import { GAME_LINES, stickerName } from './gameLines.js'
 export const ROLES = ['narrator', 'hero', 'sidekick', 'word']
 
 /** The scenes that have a character talking in a bubble (see ChapterView). */
-const GAME_SCENES = ['soundSort', 'pickPatch', 'lookRight', 'spellIt', 'tricky', 'trickyCatch', 'wordCatch']
+const GAME_SCENES = ['soundSort', 'pickPatch', 'lookRight', 'spellIt', 'writeIt', 'tricky', 'trickyCatch', 'wordCatch']
 
 /** Fill {hero}, {sidekick} and any vars; unknown {placeholders} are left in. */
 export function fillText(theme, text, vars = {}) {

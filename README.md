@@ -11,9 +11,10 @@ A story-based spelling game for a tablet. Each school week is a chapter: two pup
 3. **Pick the Patch**: hear the word, see it with the sound missing, pick the right letters. A wrong pick shows the teacher's tip.
 4. **Which Looks Right?**: hear the word and tap the one spelt right out of three (*sail*, *sayl*, *sale*).
 5. **Spell It**: look, say, cover, then build the word from letter tiles. Mistakes are shown in red and the word comes back later in the round.
-6. **Tricky words** (like *said*) use the same look–cover–spell steps.
-7. **Tricky Word Catch**: bubbles float up with different spellings of a tricky word; catch the right one before it floats away.
-8. **The end**: a sticker for the sticker book.
+6. **Write It**: look, say, cover, then write the word with a finger, one letter in each box on handwriting lines, like writing spellings out on paper. Four of the week's words (tricky words included) per chapter. See *Handwriting* below.
+7. **Tricky words** (like *said*) use the same look–cover–spell steps.
+8. **Tricky Word Catch**: bubbles float up with different spellings of a tricky word; catch the right one before it floats away.
+9. **The end**: a sticker for the sticker book.
 
 Each theme has its own voices, made once as voice clips by Google Cloud Text-to-Speech (an Australian dad reads the Beach Day story; spelling words are said in a British voice). Grown-ups can record the week's sound, and any word, in their own voice from the **Grown-ups** button. Any line with no clip or recording is read by the browser's own voice. Progress and stickers are saved in the browser on that device.
 
@@ -23,6 +24,15 @@ Each theme has its own voices, made once as voice clips by Google Cloud Text-to-
 - **Your recordings** (Grown-ups → Record your voice) are saved in the browser and, on Cloudflare too (the bucket below), so every device that opens the game plays them. The game plays them first: your recording, then the theme's clip, then the browser voice. The week's sound is only ever played from your recording, because a computer voice can't be trusted to say a sound on its own.
 
 To set up the Google key: in the Google Cloud console create a project, add billing, enable **Cloud Text-to-Speech API**, create an API key restricted to that API, and add a small budget alert. Then in GitHub open **Settings → Secrets and variables → Actions** and add it as `GOOGLE_TTS_API_KEY`.
+
+## Handwriting
+
+Write It reads each letter on the tablet itself (`src/lib/handwriting.js`); nothing is sent anywhere and there is no cost.
+
+- **Which letter is it?** The [$P point-cloud recogniser](https://depts.washington.edu/acelab/proj/dollar/pdollar.html), a well-known method from university research, compares her drawing with a model of each lowercase letter. The game knows which letter belongs in each box, so it only asks whether that letter fits at least as well as any other. Letters that are mirror images (b/d, p/q, n/u) must be the best match outright.
+- **How was it formed?** The models follow common UK primary print formation: small letters start at the dotted line, tall letters at the top line, round letters (a c d e g o q) go anticlockwise. A right letter started in a very different place, written the other way round, or not sitting on the lines gets a gentle tip and is shown being written. It is never marked wrong for that.
+- **A wrong letter** turns red and is shown being written from a green dot; she has another go at just those letters. If it's still not right, the word is shown and comes back later in the round.
+- **Her own letters:** if the game finds one of her letters hard to read, **Grown-ups → Her handwriting** lets her write it and save it. The game then reads her letters against her samples as well as its models. Samples are kept on that device.
 
 ## Learning rules
 

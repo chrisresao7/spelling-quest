@@ -101,6 +101,14 @@
         "background": "art/bg-sky.svg",
         "item": "art/item-cloud.svg"
       },
+      "writeIt": {
+        "speaker": "hero",
+        "title": "Sparkle writing",
+        "intro": "My horn can write with sparkles! Look at the word, then write it with your finger, one letter in each box, just like on paper.",
+        "prompt": "Look at the word and say it. Tap the button when you're ready to write it!",
+        "background": "art/bg-meadow.svg",
+        "item": "art/item-star.svg"
+      },
       "tricky": {
         "speaker": "hero",
         "title": "The crystal cave",
