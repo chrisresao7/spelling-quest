@@ -79,6 +79,12 @@ function rubOut() {
   if (i !== undefined) boxes.value[i].strokes.pop()
 }
 
+/** Wipe every box still being written, to start the word again. */
+function clearAll() {
+  for (const b of boxes.value) if (b.state !== 'good') b.strokes = []
+  history.length = 0
+}
+
 const editable = (b) => writing.value && b.state !== 'good'
 
 async function check() {
@@ -181,6 +187,7 @@ onMounted(look)
           <template v-if="writing">
             <SpeakButton :text="word.text" />
             <button class="btn secondary" @click="rubOut">Rub out</button>
+            <button class="btn secondary" @click="clearAll">Clear</button>
             <button v-if="phase === 'fix'" class="btn secondary" @click="showAgain">Show me</button>
             <button class="btn big" @click="check">Check</button>
           </template>

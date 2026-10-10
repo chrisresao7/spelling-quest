@@ -11,7 +11,7 @@ A story-based spelling game for a tablet. Each school week is a chapter: two pup
 3. **Pick the Patch**: hear the word, see it with the sound missing, pick the right letters. A wrong pick shows the teacher's tip.
 4. **Which Looks Right?**: hear the word and tap the one spelt right out of three (*sail*, *sayl*, *sale*).
 5. **Spell It**: look, say, cover, then build the word from letter tiles. Mistakes are shown in red and the word comes back later in the round.
-6. **Write It**: look, say, cover, then write the word with a finger, one letter in each box on handwriting lines, like writing spellings out on paper. Four of the week's words (tricky words included) per chapter. See *Handwriting* below.
+6. **Write It**: look, say, cover, then write the word with a finger, one letter in each box on handwriting lines, like writing spellings out on paper. **Rub out** takes back the last stroke and **Clear** wipes the word to start again. Four of the week's words (tricky words included) per chapter. See *Handwriting* below.
 7. **Tricky words** (like *said*) use the same look–cover–spell steps.
 8. **Tricky Word Catch**: bubbles float up with different spellings of a tricky word; catch the right one before it floats away.
 9. **The end**: a sticker for the sticker book.
