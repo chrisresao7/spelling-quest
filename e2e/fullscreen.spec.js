@@ -16,6 +16,35 @@ test('the game can fill the screen', async ({ page }) => {
   await expect(big).toBeVisible()
 })
 
+// Browsers only allow full screen after a tap, so once Big screen has been chosen on a device,
+// the game goes full screen again on the first tap anywhere.
+test('after Big screen, the first tap goes full screen again', async ({ page }) => {
+  const full = () => page.evaluate(() => !!document.fullscreenElement)
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Big screen' }).click()
+  await expect.poll(full).toBe(true)
+
+  // Opened again later: not full screen until she taps something.
+  await page.reload()
+  expect(await full()).toBe(false)
+  await page.getByRole('heading', { name: 'Pick a chapter' }).click()
+  await expect.poll(full).toBe(true)
+
+  // The Back gesture leaves full screen; the next tap comes back to it.
+  await page.evaluate(() => document.exitFullscreen())
+  await expect.poll(full).toBe(false)
+  await page.getByRole('heading', { name: 'Pick a chapter' }).click()
+  await expect.poll(full).toBe(true)
+
+  // Small screen turns it off for this device.
+  await page.getByRole('button', { name: 'Small screen' }).click()
+  await expect.poll(full).toBe(false)
+  await page.reload()
+  await page.getByRole('heading', { name: 'Pick a chapter' }).click()
+  await page.waitForTimeout(300)
+  expect(await full()).toBe(false)
+})
+
 test('Add to Home Screen opens full screen', async ({ page, request }) => {
   await page.goto('/')
   const link = page.locator('link[rel="manifest"]')
