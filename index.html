@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="theme-color" content="#7cc4f0" />
     <title>Spelling Quest</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <!-- "Add to Home Screen" opens the game full screen. use-credentials so the browser sends
+         the Cloudflare Access login cookie when it fetches the manifest. -->
+    <link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Andika is designed for early readers: single-storey "a" and "g", like the school sheets. -->

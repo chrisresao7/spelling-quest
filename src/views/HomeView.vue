@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import FullscreenButton from '../components/FullscreenButton.vue'
 import { loadThemeList, loadThemeConfig, loadWeekList } from '../composables/content.js'
 import { useTheme } from '../composables/useTheme.js'
 import { useProgress } from '../stores/progress.js'
@@ -52,6 +53,7 @@ function weekDate(id) {
 
     <section class="row">
       <RouterLink to="/stickers" class="btn">My stickers ({{ progress.stickers.length }})</RouterLink>
+      <FullscreenButton />
       <label v-if="themes.length > 1" class="theme-pick panel">
         Theme
         <select v-model="progress.settings.theme">

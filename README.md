@@ -76,4 +76,13 @@ The game runs as a Cloudflare Worker (settings in `wrangler.jsonc`), with Cloudf
 
 Until the bucket exists, recordings stay on the device they were made on.
 
+## Full screen on a tablet
+
+- **Big screen** on the home page hides the browser's bars (it uses the browser's full screen mode, so it needs a tap; it hides itself where the browser can't do it). The tablet's Back gesture or **Small screen** brings the bars back.
+- **Add to Home Screen** in the browser's menu makes an icon that opens the game full screen (`public/manifest.webmanifest`). The manifest is fetched with the Cloudflare Access login cookie (`crossorigin="use-credentials"` in `index.html`), so sign in once in the browser before adding the icon.
+
+### Home-screen icon
+
+`public/icons/icon.svg` is the source; the PNGs next to it are screenshots of it at 192, 512 (plus a "maskable" copy with a margin) and 180 px for iPad. If you change the SVG, regenerate the PNGs (any SVG-to-PNG tool will do).
+
 Search engines are asked not to index the site (`noindex` in `index.html` and `public/_headers`).
