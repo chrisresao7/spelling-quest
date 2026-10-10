@@ -1,8 +1,10 @@
 <script setup>
-// Grown-ups: record the week's sounds (and any word) in your own voice.
+// Grown-ups: record the week's sounds (and any word) in your own voice, and show the
+// writing game how she writes her letters.
 // The game plays these instead of the computer voice. See useRecordings.js for where they're kept.
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import HandwritingSamples from '../components/HandwritingSamples.vue'
 import { loadWeekList } from '../composables/content.js'
 import { deleteRecording, recordings, saveRecording, sharing, syncRecordings } from '../composables/useRecordings.js'
 import { speak, stopSpeaking } from '../composables/useSpeech.js'
@@ -143,6 +145,8 @@ function remove(row) {
         </li>
       </ul>
     </section>
+
+    <HandwritingSamples />
   </div>
 </template>
 

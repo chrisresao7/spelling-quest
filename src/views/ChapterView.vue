@@ -8,6 +8,7 @@ import PickPatch from '../games/PickPatch.vue'
 import SpellIt from '../games/SpellIt.vue'
 import LookRight from '../games/LookRight.vue'
 import TrickyCatch from '../games/TrickyCatch.vue'
+import WriteIt from '../games/WriteIt.vue'
 import { loadDictionary, loadWeek } from '../composables/content.js'
 import { useTheme } from '../composables/useTheme.js'
 import { useProgress } from '../stores/progress.js'
@@ -38,7 +39,7 @@ watchEffect(async () => {
 // and catches its words in bubbles instead.
 const steps = computed(() => {
   if (!week.value) return []
-  const s = week.value.sound ? ['intro', 'soundSort', 'pickPatch', 'lookRight', 'spellIt'] : ['intro', 'lookRight', 'spellIt', 'wordCatch']
+  const s = week.value.sound ? ['intro', 'soundSort', 'pickPatch', 'lookRight', 'spellIt', 'writeIt'] : ['intro', 'lookRight', 'spellIt', 'writeIt', 'wordCatch']
   if (week.value.tricky.length) s.push('tricky', 'trickyCatch')
   return [...s, 'end']
 })
@@ -107,6 +108,7 @@ function nextStep() {
         scene-key="spellIt"
         @done="nextStep"
       />
+      <WriteIt v-else-if="key === 'writeIt'" :week="week" @done="nextStep" />
       <SpellIt
         v-else-if="key === 'tricky'"
         :words="week.tricky"

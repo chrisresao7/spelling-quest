@@ -5,7 +5,7 @@ import { join } from 'node:path'
 // Every theme listed in index.json must have all its pictures and a story page for every game.
 const ROOT = 'public/content/themes'
 const { themes, default: first } = JSON.parse(readFileSync(join(ROOT, 'index.json'), 'utf8'))
-const SCENES = ['soundSort', 'pickPatch', 'lookRight', 'spellIt', 'tricky', 'trickyCatch', 'wordCatch']
+const SCENES = ['soundSort', 'pickPatch', 'lookRight', 'spellIt', 'writeIt', 'tricky', 'trickyCatch', 'wordCatch']
 
 function artPaths(theme) {
   const s = theme.story

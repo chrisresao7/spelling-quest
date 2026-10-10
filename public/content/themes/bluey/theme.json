@@ -101,6 +101,14 @@
         "background": "art/bg-shore.svg",
         "item": "art/item-wave.svg"
       },
+      "writeIt": {
+        "speaker": "hero",
+        "title": "Stick writing",
+        "intro": "I found the perfect stick for writing in the sand! Look at the word, then write it with your finger, one letter in each box, just like on paper.",
+        "prompt": "Look at the word and say it. Tap the button when you're ready to write it!",
+        "background": "art/bg-beach.svg",
+        "item": "art/item-shell.svg"
+      },
       "tricky": {
         "speaker": "hero",
         "title": "Tricky rock pool",

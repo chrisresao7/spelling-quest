@@ -41,3 +41,26 @@ test('a grown-up can record the week’s sound', async ({ page }) => {
   await page.locator('li', { hasText: '/ae/ sound' }).getByRole('button', { name: 'Delete' }).click()
   await expect(page.locator('li', { hasText: '/ae/ sound' })).toContainText('Not recorded yet')
 })
+
+// A grown-up saves how she writes a letter, for the writing game to learn from.
+test('a grown-up can save her handwriting', async ({ page }) => {
+  await page.goto('/#/grown-ups')
+  await expect(page.getByRole('heading', { name: 'Her handwriting' })).toBeVisible()
+  await page.getByRole('button', { name: 'w', exact: true }).click()
+  const box = await page.getByRole('img', { name: 'Write w' }).boundingBox()
+  // A wavy w, all in one go.
+  await page.mouse.move(box.x + box.width * 0.3, box.y + box.height * 0.53)
+  await page.mouse.down()
+  for (let i = 1; i <= 40; i++) {
+    const x = 0.3 + (i / 40) * 0.4
+    const y = (80 + 18 * Math.sin((i / 40) * Math.PI * 4)) / 150
+    await page.mouse.move(box.x + box.width * x, box.y + box.height * y)
+  }
+  await page.mouse.up()
+  await page.getByRole('button', { name: 'Try it' }).click()
+  await expect(page.getByText(/reads this as “m”, not “w”/)).toBeVisible()
+  await page.getByRole('button', { name: 'Save her “w”' }).click()
+  await expect(page.getByText(/now knows 1 of her “w”s/)).toBeVisible()
+  await page.reload()
+  await expect(page.getByRole('button', { name: 'w, 1 saved' })).toBeVisible()
+})

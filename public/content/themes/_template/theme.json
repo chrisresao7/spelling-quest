@@ -89,6 +89,12 @@
         "intro": "Look, cover, spell.",
         "background": "art/bg-home.svg"
       },
+      "writeIt": {
+        "speaker": "hero",
+        "title": "Scene 5",
+        "intro": "Write each word with your finger, one letter in each box.",
+        "background": "art/bg-home.svg"
+      },
       "tricky": {
         "speaker": "sidekick",
         "title": "Scene 5",
