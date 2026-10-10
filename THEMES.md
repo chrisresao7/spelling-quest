@@ -8,6 +8,7 @@ A theme changes how the game looks and the story it tells. It never changes the 
 public/content/themes/
   index.json          # which themes exist and which one is used first
   bluey/              # Beach Day
+  unicorns/           # Rainbow Valley
     theme.json
     theme.css
     art/

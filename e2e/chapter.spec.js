@@ -27,6 +27,9 @@ async function withVoiceClips(page) {
     return r.fulfill({ body: beep, contentType: 'audio/mpeg' })
   })
   await page.addInitScript(() => {
+    // These tests play the Beach Day theme, whatever the default is.
+    const key = 'spelling-quest:progress:v1'
+    if (!localStorage.getItem(key)) localStorage.setItem(key, JSON.stringify({ settings: { theme: 'bluey' } }))
     window.__sqSpoken = []
     window.__sqBrowserVoice = []
     const say = window.speechSynthesis?.speak?.bind(window.speechSynthesis)
